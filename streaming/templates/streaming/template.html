@@ -1,0 +1,42 @@
+{% load static %}
+
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>{% block title %}{% endblock %}</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link href="{% static 'streaming/css/styles.css' %}" rel="stylesheet">
+    </head>
+
+    <body>
+        <header >
+            <div class="row">
+                <div class="col-3">
+                    <img class="logo" src="{% static 'streaming/images/main_icon.png'%}" alt="YouTube Home" width="90" height="20" >
+
+                </div>
+                
+                <div class="col-6">
+                    <nav>
+                        <form action="">
+                            <input class="search" type="text" name="search_query" placeholder="Search">
+                        </form>
+                    </nav>
+                </div>      
+                <div class="col-3"></div>
+            </div>
+            
+        </header>
+        
+
+         <div class="container-fluid">
+            <div class="row">
+                {% block body %}
+                {% endblock %}
+            </div>
+         </div>
+        
+    </body>
+</html>
