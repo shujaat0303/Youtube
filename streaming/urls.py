@@ -4,5 +4,6 @@ from . import views
 
 #app_name ="streaming"
 urlpatterns=[
-    path("",views.index,name="home")
+    path("",views.index,name="home"),
+    path("",views.playVideo,name="playVideo")
 ]

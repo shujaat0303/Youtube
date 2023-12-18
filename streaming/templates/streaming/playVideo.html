@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,10 +7,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Play YouTube Video</title>
-    <link rel="shortcut icon" href="../images/favicon.png" type="image/x-icon">
+    <link rel="shortcut icon" href="{% static 'streaming/images/favicon.png' %}" type="image/x-icon">
     <!-- Link CSS -->
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/responsive.css">
+    <link rel="stylesheet" href="{% static 'streaming/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'streaming/css/responsive.css' %}">
 </head>
 
 <body>
@@ -21,13 +23,12 @@
                     style="pointer-events: none; display: block; width: 100%; height: 100%;">
                     <path d="M21 6H3V5h18v1zm0 5H3v1h18v-1zm0 6H3v1h18v-1z"></path>
                 </svg></div>
-            <a href="../index.html"><img src="../images/logo.png" width="110" height="25" alt="logo-icon"
-                    class="logo-icon"></a>
+            <a href="./index.html"><img src="{% static 'streaming/images/logo.png' %}" width="110" height="25" alt="logo-icon" class="logo-icon"></a>
         </div>
         <div class="nav-center vid-flex">
             <div class="search-box vid-flex">
                 <input type="text" placeholder="Search">
-                <img src="../images/search.png" alt="search-icon">
+                <img src="{% static 'streaming/images/search.png' %}" alt="search-icon">
             </div>
             <div class="mic-icon"><svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"
                     focusable="false" style="pointer-events: none; display: block; width: 100%; height: 100%;">
@@ -37,10 +38,10 @@
                 </svg></div>
         </div>
         <div class="nav-right vid-flex">
-            <img src="../images/upload.png" alt="upload-icon">
-            <img src="../images/more.png" alt="more-icon">
-            <img src="../images/notification.png" alt="notification-icon">
-            <img src="../images/Jack.png" alt="user-icon" class="user-icon">
+            <img src="{% static 'streaming/images/upload.png' %}" alt="upload-icon">
+            <img src="{% static 'streaming/images/more.png' %}" alt="more-icon">
+            <img src="{% static 'streaming/images/notification.png' %}" alt="notification-icon">
+            <img src="{% static 'streaming/images/Jack.png' %}" alt="user-icon" class="user-icon">
         </div>
     </nav>
 
@@ -48,7 +49,7 @@
     <div class="container play-container">
         <div class="row">
             <div class="play-video">
-                <video controls autoplay src="../images/video.mp4">
+                <video controls autoplay src="{% static 'streaming/images/video.mp4' %}">
                 </video>
                 <div class="tags">
                     <a href="">#Tags</a> <a href="">#Tags</a> <a href="">#Tags</a> <a href="">#Tags</a> <a
@@ -66,7 +67,7 @@
                 </div>
                 <hr>
                 <div class="publisher">
-                    <img src="../images/Jack.png" alt="user-icon">
+                    <img src="{% static 'streaming/images/Jack.png' %}" alt="user-icon">
                     <div>
                         <p>Channel Name</p>
                         <span>2.1 Subscribers</span>
@@ -79,18 +80,18 @@
                     <hr>
                     <h4>2.5 Comments</h4>
                     <div class="add-comment">
-                        <img src="../images/Jack.png" alt="user-icon">
+                        <img src="{% static 'streaming/images/Jack.png' %}" alt="user-icon">
                         <input type="text" placeholder="Write your comment.....">
                     </div>
                     <div class="old-comments">
-                        <img src="../images/simon.png" alt="user-icon">
+                        <img src="{% static 'streaming/images/simon.png' %}" alt="user-icon">
                         <div>
                             <h3>Simon <span>1 day ago</span></h3>
                             <p>Here will be comment</p>
                             <div class="comment-action">
-                                <img src="../images/like.png" alt="like-icon">
+                                <img src="{% static 'streaming/images/like.png' %}" alt="like-icon">
                                 <span>15</span>
-                                <img src="../images/dislike.png" alt="dislike-icon">
+                                <img src="{% static 'streaming/images/dislike.png' %}" alt="dislike-icon">
                                 <span>0</span>
                                 <span>REPLY</span>
                                 <a href="">All replies</a>
@@ -98,14 +99,14 @@
                         </div>
                     </div>
                     <div class="old-comments">
-                        <img src="../images/cameron.png" alt="user-icon">
+                        <img src="{% static 'streaming/images/cameron.png' %}" alt="user-icon">
                         <div>
                             <h3>Cameron <span>2 day ago</span></h3>
                             <p>Here will be comment</p>
                             <div class="comment-action">
-                                <img src="../images/like.png" alt="like-icon">
+                                <img src="{% static 'streaming/images/like.png' %}" alt="like-icon">
                                 <span>15</span>
-                                <img src="../images/dislike.png" alt="dislike-icon">
+                                <img src="{% static 'streaming/images/dislike.png' %}" alt="dislike-icon">
                                 <span>0</span>
                                 <span>REPLY</span>
                                 <a href="">All replies</a>
@@ -118,7 +119,7 @@
 
             <div class="right-sidebar">
                 <div class="side-video-list">
-                    <a href="" class="small-thumbnail"><img src="../images/thumbnail2.png" alt="thumbnail"></a>
+                    <a href="" class="small-thumbnail"><img src="{% static 'streaming/images/thumbnail3.png' %}" alt="thumbnail"></a>
                     <div class="vid-info">
                         <a class="nav-link" href="">Here any title of your video abcdefghijklmnopqrstuvwxyz</a>
                         <p>Easy Tutorials</p>
@@ -126,47 +127,7 @@
                     </div>
                 </div>
                 <div class="side-video-list">
-                    <a href="" class="small-thumbnail"><img src="../images/thumbnail3.png" alt="thumbnail"></a>
-                    <div class="vid-info">
-                        <a class="nav-link" href="">Here any title of your video abcdefghijklmnopqrstuvwxyz</a>
-                        <p>Easy Tutorials</p>
-                        <p>100k Views</p>
-                    </div>
-                </div>
-                <div class="side-video-list">
-                    <a href="" class="small-thumbnail"><img src="../images/thumbnail4.png" alt="thumbnail"></a>
-                    <div class="vid-info">
-                        <a class="nav-link" href="">Here any title of your video abcdefghijklmnopqrstuvwxyz</a>
-                        <p>Easy Tutorials</p>
-                        <p>100k Views</p>
-                    </div>
-                </div>
-                <div class="side-video-list">
-                    <a href="" class="small-thumbnail"><img src="../images/thumbnail5.png" alt="thumbnail"></a>
-                    <div class="vid-info">
-                        <a class="nav-link" href="">Here any title of your video abcdefghijklmnopqrstuvwxyz</a>
-                        <p>Easy Tutorials</p>
-                        <p>100k Views</p>
-                    </div>
-                </div>
-                <div class="side-video-list">
-                    <a href="" class="small-thumbnail"><img src="../images/thumbnail6.png" alt="thumbnail"></a>
-                    <div class="vid-info">
-                        <a class="nav-link" href="">Here any title of your video abcdefghijklmnopqrstuvwxyz</a>
-                        <p>Easy Tutorials</p>
-                        <p>100k Views</p>
-                    </div>
-                </div>
-                <div class="side-video-list">
-                    <a href="" class="small-thumbnail"><img src="../images/thumbnail7.png" alt="thumbnail"></a>
-                    <div class="vid-info">
-                        <a class="nav-link" href="">Here any title of your video abcdefghijklmnopqrstuvwxyz</a>
-                        <p>Easy Tutorials</p>
-                        <p>100k Views</p>
-                    </div>
-                </div>
-                <div class="side-video-list">
-                    <a href="" class="small-thumbnail"><img src="../images/thumbnail8.png" alt="thumbnail"></a>
+                    <a href="" class="small-thumbnail"><img src="{% static 'streaming/images/thumbnail5.png' %}" alt="thumbnail"></a>
                     <div class="vid-info">
                         <a class="nav-link" href="">Here any title of your video abcdefghijklmnopqrstuvwxyz</a>
                         <p>Easy Tutorials</p>
@@ -178,18 +139,8 @@
     </div>
 
 
-    <!-- Bootstrap JS -->
-    <!-- <script src="https://code.jquery.com/jquery-3.7.1.min.js"
-        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
-        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
-        integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
-        crossorigin="anonymous"></script> -->
-
     <!-- Link JS -->
-    <script src="../js/script.js"></script>
+    <script src="{% static 'streaming/js/script.js' %}"></script>
 
 </body>
 
