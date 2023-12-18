@@ -7,10 +7,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>YouTube</title>
-    <link rel="shortcut icon" href="./images/favicon.png" type="image/x-icon">
+    <link rel="shortcut icon" href="{% static 'streaming/images/favicon.png' %}" type="image/x-icon">
     <!-- Link CSS -->
-    <link rel="stylesheet" href="./css/style.css">
-    <link rel="stylesheet" href="./css/responsive.css">
+    <link rel="stylesheet" href="{% static 'streaming/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'streaming/css/responsive.css' %}">
     <!-- Bootstrap CSS -->
     <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous"> -->
@@ -26,12 +26,12 @@
                     style="pointer-events: none; display: block; width: 100%; height: 100%;">
                     <path d="M21 6H3V5h18v1zm0 5H3v1h18v-1zm0 6H3v1h18v-1z"></path>
                 </svg></div>
-            <a href="./index.html"><img src="./images/logo.png" width="110" height="25" alt="logo-icon" class="logo-icon"></a>
+            <a href="./index.html"><img src="{% static 'streaming/images/logo.png' %}" width="110" height="25" alt="logo-icon" class="logo-icon"></a>
         </div>
         <div class="nav-center vid-flex">
             <div class="search-box vid-flex">
                 <input type="text" placeholder="Search">
-                <img src="./images/search.png" alt="search-icon">
+                <img src="{% static 'streaming/images/search.png' %}" alt="search-icon">
             </div>
             <div class="mic-icon"><svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"
                     focusable="false" style="pointer-events: none; display: block; width: 100%; height: 100%;">
@@ -41,46 +41,42 @@
                 </svg></div>
         </div>
         <div class="nav-right vid-flex">
-            <img src="./images/upload.png" alt="upload-icon">
-            <img src="./images/more.png" alt="more-icon">
-            <img src="./images/notification.png" alt="notification-icon">
-            <img src="./images/Jack.png" alt="user-icon" class="user-icon">
+            <img src="{% static 'streaming/images/upload.png' %}" alt="upload-icon">
+            <img src="{% static 'streaming/images/more.png' %}" alt="more-icon">
+            <img src="{% static 'streaming/images/notification.png' %}" alt="notification-icon">
+            <img src="{% static 'streaming/images/Jack.png' %}" alt="user-icon" class="user-icon">
         </div>
     </nav>
 
     <!-- Sidebar -->
     <div class="sidebar">
         <div class="shortcut-links">
-            <a href="" class="nav-link"><img src="./images/home.png" alt=""><p>Home</p></a>
-            <a href="" class="nav-link"><img src="./images/explore.png" alt=""><p>Explore</p></a>
-            <a href="" class="nav-link"><img src="./images/subscriprion.png" alt=""><p>Subscriprion</p></a>
-            <a href="" class="nav-link"><img src="./images/library.png" alt=""><p>Library</p></a>
-            <a href="" class="nav-link"><img src="./images/history.png" alt=""><p>History</p></a>
-            <a href="" class="nav-link"><img src="./images/playlist.png" alt=""><p>Playlist</p></a>
-            <a href="" class="nav-link"><img src="./images/messages.png" alt=""><p>Messages</p></a>
-            <a href="" class="nav-link"><img src="./images/show-more.png" alt=""><p>Show More</p></a>
+            <a href="" class="nav-link"><img src="{% static 'streaming/images/home.png' %}" alt=""><p>Home</p></a>
+            <a href="" class="nav-link"><img src="{% static 'streaming/images/explore.png' %}" alt=""><p>Explore</p></a>
+            <a href="" class="nav-link"><img src="{% static 'streaming/images/subscriprion.png' %}" alt=""><p>Subscriprion</p></a>
+            <a href="" class="nav-link"><img src="{% static 'streaming/images/library.png' %}" alt=""><p>Library</p></a>
+            <a href="" class="nav-link"><img src="{% static 'streaming/images/history.png' %}" alt=""><p>History</p></a>
+            <a href="" class="nav-link"><img src="{% static 'streaming/images/playlist.png' %}" alt=""><p>Playlist</p></a>
+            <a href="" class="nav-link"><img src="{% static 'streaming/images/messages.png' %}" alt=""><p>Messages</p></a>
+            <a href="" class="nav-link"><img src="{% static 'streaming/images/show-more.png' %}" alt=""><p>Show More</p></a>
             <hr>
         </div>
         <div class="subscribed-list">
             <h3>SUBSCRIBED</h3>
-            <a href="" class="nav-link"><img src="./images/Jack.png" alt="user-icon"><p>Jack</p></a>
-            <a href="" class="nav-link"><img src="./images/simon.png" alt="user-icon"><p>Simon</p></a>
-            <a href="" class="nav-link"><img src="./images/tom.png" alt="user-icon"><p>Tom</p></a>
-            <a href="" class="nav-link"><img src="./images/megan.png" alt="user-icon"><p>Megan</p></a>
-            <a href="" class="nav-link"><img src="./images/cameron.png" alt="user-icon"><p>Cameron</p></a>
+            <a href="" class="nav-link"><img src="{% static 'streaming/images/Jack.png' %}" alt="user-icon"><p>Jack</p></a>
         </div>
     </div>
 
     <!-- Main -->
     <div class="container">
         <div class="banner">
-            <img src="./images/banner.png" alt="banner">
+            <img src="{% static 'streaming/images/banner.png' %}" alt="banner">
         </div>
         <div class="list-container">
             <div class="video-list">
-                <a href="./htmlpages/playVideo.html"><img src="./images/thumbnail1.png" alt="thumbnail" class="thumbnail"></a>
+                <a href="./htmlpages/playVideo.html"><img src="{% static 'streaming/images/thumbnail1.png' %}" alt="thumbnail" class="thumbnail"></a>
                 <div class="vid-flex">
-                    <img src="./images/Jack.png" alt="user-icon">
+                    <img src="{% static 'streaming/images/Jack.png' %}" alt="user-icon">
                     <div class="vid-info">
                         <a class="nav-link" href="./htmlpages/playVideo.html">Here any title of your video abcdefghijklmnopqrstuvwxyz</a>
                         <p>Easy Tutorials</p>
@@ -89,9 +85,9 @@
                 </div>
             </div>
             <div class="video-list">
-                <a href=""><img src="./images/thumbnail2.png" alt="thumbnail" class="thumbnail"></a>
+                <a href=""><img src="{% static 'streaming/images/thumbnail2.png' %}" alt="thumbnail" class="thumbnail"></a>
                 <div class="vid-flex">
-                    <img src="./images/Jack.png" alt="user-icon">
+                    <img src="{% static 'streaming/images/Jack.png' %}" alt="user-icon">
                     <div class="vid-info">
                         <a class="nav-link" href="">Here any title of your video abcdefghijklmnopqrstuvwxyz</a>
                         <p>Easy Tutorials</p>
@@ -100,9 +96,9 @@
                 </div>
             </div>
             <div class="video-list">
-                <a href=""><img src="./images/thumbnail3.png" alt="thumbnail" class="thumbnail"></a>
+                <a href=""><img src="{% static 'streaming/images/thumbnail3.png' %}" alt="thumbnail" class="thumbnail"></a>
                 <div class="vid-flex">
-                    <img src="./images/Jack.png" alt="user-icon">
+                    <img src="{% static 'streaming/images/Jack.png' %}" alt="user-icon">
                     <div class="vid-info">
                         <a class="nav-link" href="">Here any title of your video abcdefghijklmnopqrstuvwxyz</a>
                         <p>Easy Tutorials</p>
@@ -111,53 +107,9 @@
                 </div>
             </div>
             <div class="video-list">
-                <a href=""><img src="./images/thumbnail4.png" alt="thumbnail" class="thumbnail"></a>
+                <a href=""><img src="{% static 'streaming/images/thumbnail4.png' %}" alt="thumbnail" class="thumbnail"></a>
                 <div class="vid-flex">
-                    <img src="./images/Jack.png" alt="user-icon">
-                    <div class="vid-info">
-                        <a class="nav-link" href="">Here any title of your video abcdefghijklmnopqrstuvwxyz</a>
-                        <p>Easy Tutorials</p>
-                        <p>100k Views &bull; 1 hour</p>
-                    </div>
-                </div>
-            </div>
-            <div class="video-list">
-                <a href=""><img src="./images/thumbnail5.png" alt="thumbnail" class="thumbnail"></a>
-                <div class="vid-flex">
-                    <img src="./images/Jack.png" alt="user-icon">
-                    <div class="vid-info">
-                        <a class="nav-link" href="">Here any title of your video abcdefghijklmnopqrstuvwxyz</a>
-                        <p>Easy Tutorials</p>
-                        <p>100k Views &bull; 1 hour</p>
-                    </div>
-                </div>
-            </div>
-            <div class="video-list">
-                <a href=""><img src="./images/thumbnail6.png" alt="thumbnail" class="thumbnail"></a>
-                <div class="vid-flex">
-                    <img src="./images/Jack.png" alt="user-icon">
-                    <div class="vid-info">
-                        <a class="nav-link" href="">Here any title of your video abcdefghijklmnopqrstuvwxyz</a>
-                        <p>Easy Tutorials</p>
-                        <p>100k Views &bull; 1 hour</p>
-                    </div>
-                </div>
-            </div>
-            <div class="video-list">
-                <a href=""><img src="./images/thumbnail7.png" alt="thumbnail" class="thumbnail"></a>
-                <div class="vid-flex">
-                    <img src="./images/Jack.png" alt="user-icon">
-                    <div class="vid-info">
-                        <a class="nav-link" href="">Here any title of your video abcdefghijklmnopqrstuvwxyz</a>
-                        <p>Easy Tutorials</p>
-                        <p>100k Views &bull; 1 hour</p>
-                    </div>
-                </div>
-            </div>
-            <div class="video-list">
-                <a href=""><img src="./images/thumbnail8.png" alt="thumbnail" class="thumbnail"></a>
-                <div class="vid-flex">
-                    <img src="./images/Jack.png" alt="user-icon">
+                    <img src="{% static 'streaming/images/Jack.png' %}" alt="user-icon">
                     <div class="vid-info">
                         <a class="nav-link" href="">Here any title of your video abcdefghijklmnopqrstuvwxyz</a>
                         <p>Easy Tutorials</p>
@@ -183,7 +135,7 @@
         crossorigin="anonymous"></script> -->
     
     <!-- Link JS -->
-    <script src="./js/script.js"></script>
+    <script src="{% static 'streaming/js/script.js' %}"></script>
 
 </body>
 
