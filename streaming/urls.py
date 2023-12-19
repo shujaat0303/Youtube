@@ -6,5 +6,5 @@ from . import views
 urlpatterns=[
     path("",views.index,name="home"),
     path("watch/<int:v>",views.playVideo,name="playVideo"),
-    path("channel/<int:c>",views.channelPage,name="channelPage")
+    path("channel/<int:c>",views.channel,name="channel")
 ]
