@@ -23,7 +23,7 @@
                     style="pointer-events: none; display: block; width: 100%; height: 100%;">
                     <path d="M21 6H3V5h18v1zm0 5H3v1h18v-1zm0 6H3v1h18v-1z"></path>
                 </svg></div>
-            <a href="./index.html"><img src="{% static 'streaming/images/logo.png' %}" width="110" height="25" alt="logo-icon" class="logo-icon"></a>
+            <a href="{% url 'home' %}"><img src="{% static 'streaming/images/logo.png' %}" width="110" height="25" alt="logo-icon" class="logo-icon"></a>
         </div>
         <div class="nav-center vid-flex">
             <div class="search-box vid-flex">
@@ -59,10 +59,10 @@
                 <div class="play-video-info">
                     <p>205k Views &bull; 5 days ago</p>
                     <div>
-                        <a href=""><img src="../images/like.png" alt="like-icon">100k</a>
-                        <a href=""><img src="../images/dislike.png" alt="dislike-icon"></a>
-                        <a href=""><img src="../images/share.png" alt="share-icon">Share</a>
-                        <a href=""><img src="../images/save.png" alt="save-icon">Save</a>
+                        <a href=""><img src="{% static 'streaming/images/like.png' %}" alt="like-icon">100k</a>
+                        <a href=""><img src="{% static 'streaming/images/dislike.png' %}" alt="dislike-icon"></a>
+                        <a href=""><img src="{% static 'streaming/images/share.png' %}" alt="share-icon">Share</a>
+                        <a href=""><img src="{% static 'streaming/images/save.png' %}" alt="save-icon">Save</a>
                     </div>
                 </div>
                 <hr>
@@ -114,7 +114,6 @@
                         </div>
                     </div>
                 </div>
-
             </div>
 
             <div class="right-sidebar">

@@ -407,3 +407,26 @@ nav {
 .old-comments .comment-action a {
     color: #0000ff;
 }
+
+
+/* Channel */
+
+.channel .cover {
+    width: 100%;
+}
+
+.profile {
+    width: 150px;
+    border-radius: 50%;
+}
+
+.channel .profile-div {
+    /* position: sticky; */
+    margin-top: 10px;
+    align-items: center;
+    display: flex;
+}
+
+.subscribe-btn {
+    margin-left: 900px;
+}

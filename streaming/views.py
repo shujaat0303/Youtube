@@ -7,3 +7,7 @@ def index(request):
 def playVideo(request,v):
     #get video from database then send it to playVideo.html
     return render(request,"streaming/playVideo.html")
+
+def channelPage(request,c):
+    #get video from database then send it to channelPage.html
+    return render(request,"streaming/channelPage.html")
