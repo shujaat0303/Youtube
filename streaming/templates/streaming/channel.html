@@ -5,7 +5,7 @@
 
     <!-- Navbar -->
     {% include "streaming/navbar.html" %}
-    
+
     <!-- Sidebar -->
     {% include "streaming/sidebar.html" %}
 
@@ -25,7 +25,7 @@
                 <div class="vid-flex">
                     <img src="{% static 'streaming/images/Jack.png' %}" alt="user-icon">
                     <div class="vid-info">
-                        <a class="nav-link" href="{% static 'streaming/htmlpages/playVideo.html' %}">Here any title of your video
+                        <a class="nav-link" href="{% url 'playVideo' v=1%}">Here any title of your video
                             abcdefghijklmnopqrstuvwxyz</a>
                         <p>Easy Tutorials</p>
                         <p>100k Views &bull; 1 hour</p>
@@ -38,7 +38,7 @@
                 <div class="vid-flex">
                     <img src="{% static 'streaming/images/Jack.png' %}" alt="user-icon">
                     <div class="vid-info">
-                        <a class="nav-link" href="{% static 'streaming/htmlpages/playVideo.html' %}">Here any title of your video
+                        <a class="nav-link" href="{% url 'playVideo' v=1%}">Here any title of your video
                             abcdefghijklmnopqrstuvwxyz</a>
                         <p>Easy Tutorials</p>
                         <p>100k Views &bull; 1 hour</p>
@@ -51,7 +51,7 @@
                 <div class="vid-flex">
                     <img src="{% static 'streaming/images/Jack.png' %}" alt="user-icon">
                     <div class="vid-info">
-                        <a class="nav-link" href="{% static 'streaming/htmlpages/playVideo.html' %}">Here any title of your video
+                        <a class="nav-link" href="{% url 'playVideo' v=1%}">Here any title of your video
                             abcdefghijklmnopqrstuvwxyz</a>
                         <p>Easy Tutorials</p>
                         <p>100k Views &bull; 1 hour</p>
@@ -64,7 +64,7 @@
                 <div class="vid-flex">
                     <img src="{% static 'streaming/images/Jack.png' %}" alt="user-icon">
                     <div class="vid-info">
-                        <a class="nav-link" href="{% static 'streaming/htmlpages/playVideo.html' %}">Here any title of your video
+                        <a class="nav-link" href="{% url 'playVideo' v=1%}">Here any title of your video
                             abcdefghijklmnopqrstuvwxyz</a>
                         <p>Easy Tutorials</p>
                         <p>100k Views &bull; 1 hour</p>
@@ -72,6 +72,5 @@
                 </div>
             </div>
         </div>
-
     </div>
 {% endblock %}
