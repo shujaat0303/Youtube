@@ -412,7 +412,7 @@ nav {
 /* Channel */
 
 .channel {
-    margin-bottom: 50px;
+    margin-bottom: 100px;
 }
 
 .cover {
@@ -453,4 +453,55 @@ nav {
     padding-right: 12px;    
     border-radius: 100px;
     cursor: pointer;
+}
+
+
+/* Dropdown */
+
+.dropdown {
+    display: inline-block;
+}
+
+.dropdown .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    min-width: 300px;
+    right: 0;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-right: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown-content button {
+    padding-top: 10px;
+    padding-bottom: 10px;    
+    padding-left: 12px;    
+    padding-right: 12px;    
+    border-radius: 100px;
+    cursor: pointer;
+}
+
+.dropdown-content hr {
+    border: 0;
+    height: 1px;
+    background: #ccc;
+    margin: 10px 0;
+}
+
+.profile {
+    width: 100px !important;
+    height: 100px !important;
+    border-radius: 50%;
+}
+
+.dropdown-btns button {
+    margin-left: 35px;
 }

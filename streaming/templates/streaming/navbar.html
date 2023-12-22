@@ -21,9 +21,24 @@
             </svg></div>
     </div>
     <div class="nav-right vid-flex">
-        <img src="{% static 'streaming/images/upload.png' %}" alt="upload-icon">
-        <img src="{% static 'streaming/images/more.png' %}" alt="more-icon">
-        <img src="{% static 'streaming/images/notification.png' %}" alt="notification-icon">
-        <img src="{% static 'streaming/images/Jack.png' %}" alt="user-icon" class="user-icon">
+        <a href=""><img src="{% static 'streaming/images/upload.png' %}" alt="upload-icon"></a>
+        <a href=""><img src="{% static 'streaming/images/more.png' %}" alt="more-icon"></a>
+        <a href=""><img src="{% static 'streaming/images/notification.png' %}" alt="notification-icon"></a>
+
+        <div class="dropdown">
+            <img src="{% static 'streaming/images/Jack.png' %}" alt="user-icon" class="user-icon">
+            <div class="dropdown-content">
+                <div class="dropdown-profile vid-flex">
+                    <img class="profile" src="{% static 'streaming/images/megan.png' %}" alt="channel-profile">
+                    <h4>ChannelName</h4>
+                </div>
+                <hr>
+                <div class="dropdown-btns">
+                    <button>SETTING</button>
+                    <button>LOGOUT</button>
+                </div>
+            </div>
+        </div>
+
     </div>
 </nav>
