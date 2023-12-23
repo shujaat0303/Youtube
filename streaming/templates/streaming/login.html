@@ -4,18 +4,18 @@
 
 <!-- Login -->
 <div class="login">
-    <h4 class="google">Google</h4>
+    <h4 class="google">YouTube</h4>
     <h4 class="signin">Sign in</h4>
     <p>to continue to YouTube</p>
     <form action="">
-        <input type="text" placeholder="Email or phone"><br><br>
-        <input type="password" placeholder="Password"><br>
+        <input type="text" placeholder="Email or phone" required><br><br>
+        <input type="password" placeholder="Password" required><br>
     </form>
     <div class="f-pass-div">
-        <a class="f-pass" href="">Forgot email?</a>
+        <a class="f-pass" href="">Forgot password?</a>
     </div>
     <div class="login-btn vid-flex">
-        <a href="">Create account</a>
+        <a href="{% url 'signup' %}">Create account</a>
         <button>Sign in</button>
     </div>
 </div>

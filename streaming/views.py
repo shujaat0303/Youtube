@@ -14,3 +14,6 @@ def channel(request,c):
 
 def login(request):
     return render(request,"streaming/login.html")
+
+def signup(request):
+    return render(request,"streaming/signup.html")

@@ -1,0 +1,23 @@
+{% extends "streaming/layout.html" %}
+
+{% block body %}
+
+<!-- Login -->
+<div class="signup">
+    <h4 class="google">YouTube</h4>
+    <h4 class="signin">Sign up</h4>
+    <form action="">
+        <input type="text" placeholder="Channel Name" required><br><br>
+        <input type="text" placeholder="Username" required><br><br>
+        <input type="text" placeholder="Email or phone" required><br><br>
+        <input type="password" placeholder="Password" required><br>
+    </form>
+    <div class="signup-btn vid-flex">
+        <a href="{% url 'login' %}">Back to Sign in</a>
+        <button>Sign up</button>
+    </div>
+</div>
+
+
+
+{% endblock %}

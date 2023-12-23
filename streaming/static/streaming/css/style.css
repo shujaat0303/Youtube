@@ -549,6 +549,7 @@ nav {
 
 .f-pass {
     color: #0000ff;
+    font-size: 14px;
 }
 
 .login-btn {
@@ -575,6 +576,68 @@ nav {
 }
 
 .login input {
+    width: 350px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 12px;
+    padding-right: 12px;
+    border-radius: 5px;
+    border-color: rgba(0, 0, 0, 0.2);
+}
+
+
+/* Sign up */
+
+.signup {
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    margin-top: 65px;
+    margin-left: 550px;
+    margin-right: 550px;
+    text-align: center;
+}
+
+.signup .google {
+    padding-top: 40px;
+    margin-bottom: 20px;
+    font-size: 25px;
+    font-weight: 500;
+}
+
+.signup .signin {
+    margin-bottom: 14px;
+    font-size: 20px;
+    font-weight: 250;
+}
+
+.signup form {
+    margin-bottom: 10px;
+}
+
+.signup-btn {
+    margin-top: 65px;
+    padding-bottom: 65px;
+    display: flex;
+}
+
+.signup-btn a {
+    margin-left: 50px;
+    color: #0000ff;
+}
+
+.signup-btn button {
+    margin-left: 150px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    background-color: cornflowerblue;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.signup input {
     width: 350px;
     padding-top: 15px;
     padding-bottom: 15px;
