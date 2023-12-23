@@ -11,3 +11,6 @@ def playVideo(request,v):
 def channel(request,c):
     #get video from database then send it to channelPage.html
     return render(request,"streaming/channel.html")
+
+def login(request):
+    return render(request,"streaming/login.html")

@@ -480,13 +480,18 @@ nav {
     display: block;
 }
 
-.dropdown-content button {
+.dropdown-content a {
     padding-top: 10px;
     padding-bottom: 10px;    
     padding-left: 12px;    
     padding-right: 12px;    
-    border-radius: 100px;
     cursor: pointer;
+    margin-left: 35px;
+}
+
+.dropdown-btns {
+    padding-top: 10px;
+    margin-bottom: 10px;
 }
 
 .dropdown-content hr {
@@ -502,6 +507,79 @@ nav {
     border-radius: 50%;
 }
 
-.dropdown-btns button {
-    margin-left: 35px;
+
+
+/* Log in */
+
+.login {
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    margin-top: 100px;
+    margin-left: 550px;
+    margin-right: 550px;
+    text-align: center;
+}
+
+.login .google {
+    padding-top: 40px;
+    margin-bottom: 20px;
+    font-size: 25px;
+    font-weight: 500;
+}
+
+.login .signin {
+    margin-bottom: 14px;
+    font-size: 20px;
+    font-weight: 250;
+}
+
+.login p {
+    margin-bottom: 35px;
+    font-size: 17px;
+}
+
+.login form {
+    margin-bottom: 10px;
+}
+
+.f-pass-div {
+    display: flex;
+    margin-left: 50px;
+}
+
+.f-pass {
+    color: #0000ff;
+}
+
+.login-btn {
+    margin-top: 65px;
+    padding-bottom: 65px;
+    display: flex;
+}
+
+.login-btn a {
+    margin-left: 50px;
+    color: #0000ff;
+}
+
+.login-btn button {
+    margin-left: 150px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    background-color: cornflowerblue;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.login input {
+    width: 350px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 12px;
+    padding-right: 12px;
+    border-radius: 5px;
+    border-color: rgba(0, 0, 0, 0.2);
 }
