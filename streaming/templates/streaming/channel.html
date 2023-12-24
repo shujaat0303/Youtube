@@ -3,83 +3,84 @@
 
 {% block body %}
 
-    <!-- Navbar -->
-    {% include "streaming/navbar.html" %}
+<!-- Navbar -->
+{% include "streaming/navbar.html" %}
 
-    <!-- Sidebar -->
-    {% include "streaming/sidebar.html" %}
+<!-- Sidebar -->
+{% include "streaming/sidebar.html" %}
 
-    <!-- Main -->
-    <div class="container">
-        <div class="channel">
-            <img class="cover" src="{% static 'streaming/images/banner.png' %}" alt="channel-cover">
-            <img class="profile" src="{% static 'streaming/images/megan.png' %}" alt="channel-profile">
-            <div class="profile-div">
-                <h2>ChannelName</h2>
-                <div class="vid-flex channel-username">
-                    <p>@username</p>
-                    <span> &bull; 1M Subscribers</span>
-                    <span> &bull; 400 Videos</span>
+<!-- Main -->
+<div class="container">
+    <div class="channel">
+        <img class="cover" src="{% static 'streaming/images/banner.png' %}" alt="channel-cover">
+        <img class="profile" src="{% static 'streaming/images/megan.png' %}" alt="channel-profile">
+        <div class="profile-div">
+            <h2>ChannelName</h2>
+            <div class="vid-flex channel-username">
+                <p>@username</p>
+                <span> &bull; 1M Subscribers</span>
+                <span> &bull; 400 Videos</span>
+            </div>
+            <div class="channel-des">
+                <p>Hi This is my channel and .....</p>
+            </div>
+            <button class="subscribe-btn" type="button">SUBSCRIBE</button>
+        </div>
+    </div>
+    <div class="list-container">
+        <div class="video-list">
+            <a href="{% url 'playVideo' v=1%}"><img src="{% static 'streaming/images/thumbnail1.png' %}" alt="thumbnail"
+                    class="thumbnail"></a>
+            <div class="vid-flex">
+                <img src="{% static 'streaming/images/Jack.png' %}" alt="user-icon">
+                <div class="vid-info">
+                    <a class="nav-link" href="{% url 'playVideo' v=1%}">Here any title of your video
+                        abcdefghijklmnopqrstuvwxyz</a>
+                    <p>Easy Tutorials</p>
+                    <p>100k Views &bull; 1 hour</p>
                 </div>
-                <div class="channel-des">
-                    <p>Hi This is my channel and .....</p>
-                </div>
-                <button class="subscribe-btn" type="button">SUBSCRIBE</button>
             </div>
         </div>
-        <div class="list-container">
-            <div class="video-list">
-                <a href="{% url 'playVideo' v=1%}"><img src="{% static 'streaming/images/thumbnail1.png' %}" alt="thumbnail"
-                        class="thumbnail"></a>
-                <div class="vid-flex">
-                    <img src="{% static 'streaming/images/Jack.png' %}" alt="user-icon">
-                    <div class="vid-info">
-                        <a class="nav-link" href="{% url 'playVideo' v=1%}">Here any title of your video
-                            abcdefghijklmnopqrstuvwxyz</a>
-                        <p>Easy Tutorials</p>
-                        <p>100k Views &bull; 1 hour</p>
-                    </div>
+        <div class="video-list">
+            <a href="{% url 'playVideo' v=1%}"><img src="{% static 'streaming/images/thumbnail3.png' %}" alt="thumbnail"
+                    class="thumbnail"></a>
+            <div class="vid-flex">
+                <img src="{% static 'streaming/images/Jack.png' %}" alt="user-icon">
+                <div class="vid-info">
+                    <a class="nav-link" href="{% url 'playVideo' v=1%}">Here any title of your video
+                        abcdefghijklmnopqrstuvwxyz</a>
+                    <p>Easy Tutorials</p>
+                    <p>100k Views &bull; 1 hour</p>
                 </div>
             </div>
-            <div class="video-list">
-                <a href="{% url 'playVideo' v=1%}"><img src="{% static 'streaming/images/thumbnail3.png' %}" alt="thumbnail"
-                        class="thumbnail"></a>
-                <div class="vid-flex">
-                    <img src="{% static 'streaming/images/Jack.png' %}" alt="user-icon">
-                    <div class="vid-info">
-                        <a class="nav-link" href="{% url 'playVideo' v=1%}">Here any title of your video
-                            abcdefghijklmnopqrstuvwxyz</a>
-                        <p>Easy Tutorials</p>
-                        <p>100k Views &bull; 1 hour</p>
-                    </div>
+        </div>
+        <div class="video-list">
+            <a href="{% url 'playVideo' v=1%}"><img src="{% static 'streaming/images/thumbnail4.png' %}" alt="thumbnail"
+                    class="thumbnail"></a>
+            <div class="vid-flex">
+                <img src="{% static 'streaming/images/Jack.png' %}" alt="user-icon">
+                <div class="vid-info">
+                    <a class="nav-link" href="{% url 'playVideo' v=1%}">Here any title of your video
+                        abcdefghijklmnopqrstuvwxyz</a>
+                    <p>Easy Tutorials</p>
+                    <p>100k Views &bull; 1 hour</p>
                 </div>
             </div>
-            <div class="video-list">
-                <a href="{% url 'playVideo' v=1%}"><img src="{% static 'streaming/images/thumbnail4.png' %}" alt="thumbnail"
-                        class="thumbnail"></a>
-                <div class="vid-flex">
-                    <img src="{% static 'streaming/images/Jack.png' %}" alt="user-icon">
-                    <div class="vid-info">
-                        <a class="nav-link" href="{% url 'playVideo' v=1%}">Here any title of your video
-                            abcdefghijklmnopqrstuvwxyz</a>
-                        <p>Easy Tutorials</p>
-                        <p>100k Views &bull; 1 hour</p>
-                    </div>
-                </div>
-            </div>
-            <div class="video-list">
-                <a href="{% url 'playVideo' v=1%}"><img src="{% static 'streaming/images/thumbnail5.png' %}" alt="thumbnail"
-                        class="thumbnail"></a>
-                <div class="vid-flex">
-                    <img src="{% static 'streaming/images/Jack.png' %}" alt="user-icon">
-                    <div class="vid-info">
-                        <a class="nav-link" href="{% url 'playVideo' v=1%}">Here any title of your video
-                            abcdefghijklmnopqrstuvwxyz</a>
-                        <p>Easy Tutorials</p>
-                        <p>100k Views &bull; 1 hour</p>
-                    </div>
+        </div>
+        <div class="video-list">
+            <a href="{% url 'playVideo' v=1%}"><img src="{% static 'streaming/images/thumbnail5.png' %}" alt="thumbnail"
+                    class="thumbnail"></a>
+            <div class="vid-flex">
+                <img src="{% static 'streaming/images/Jack.png' %}" alt="user-icon">
+                <div class="vid-info">
+                    <a class="nav-link" href="{% url 'playVideo' v=1%}">Here any title of your video
+                        abcdefghijklmnopqrstuvwxyz</a>
+                    <p>Easy Tutorials</p>
+                    <p>100k Views &bull; 1 hour</p>
                 </div>
             </div>
         </div>
     </div>
+</div>
+
 {% endblock %}
