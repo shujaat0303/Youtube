@@ -5,22 +5,24 @@ from django.db import models
 
 
 class User(AbstractUser):
+    profile_pic=models.FileField(upload_to='images/pp',default=None, blank=True, null=True)
     pass
 
 class Channel(models.Model):
     by = models.ForeignKey(User, on_delete=models.CASCADE, related_name="channel")
     name = models.CharField(max_length=20)
     description = models.CharField(max_length=4000)
-    # cover
+    cover = models.FileField(upload_to='images/cover',default=None, blank=True, null=True)
 
 
 class Video(models.Model):
     title = models.CharField(max_length=100)
     description = models.CharField(max_length=4000)
-    Channel = models.ForeignKey(Channel, on_delete=models.CASCADE, related_name="video")
+    Channel = models.ForeignKey(Channel, on_delete=models.CASCADE, related_name="video",)
     date = models.DateTimeField(auto_now_add=True)
-    # thumbnail
-    # video
+    #TODO: Add media settings 
+    thumbnail = models.FileField(upload_to='images/thumbnail',default=None, blank=True, null=True)
+    video = models.FileField(upload_to='videos/',default=None, blank=True, null=True)
 
 
 
