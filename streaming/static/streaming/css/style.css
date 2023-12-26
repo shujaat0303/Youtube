@@ -656,17 +656,6 @@ nav {
     background-color: rgba(0, 0, 0, 0.2);
 }
 
-.s-pics {
-    /* background-color: #ed3833   ; */
-    position: absolute;
-    top: 425px;
-    right: 60px;
-}
-
-.s-pics input {
-    width: 200px;
-}
-
 .s-pics button {
     padding-top: 5px;
     padding-bottom: 5px;
@@ -681,26 +670,6 @@ nav {
     border-radius: 50%;
     margin-top: 5px;
     margin-left: 5px;
-}
-
-.s-profile-div {
-    position: absolute;
-    margin-left: 200px;
-    top: 425px;
-    /* background-color: #5a5a5a; */
-}
-
-.s-profile-div input, button {
-    margin-top: 20px;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    padding-left: 10px;
-    padding-right: 10px;
-    width: 155px;
-}
-
-.s-profile-div button {
-    cursor: pointer;
 }
 
 .settings-opt {
@@ -729,9 +698,13 @@ nav {
     padding-bottom: 5px;
     padding-left: 10px;
     padding-right: 10px;
-    width: 157px;
+    width: 200px;
     margin-bottom: 20px;
 }
+
+/* .settings-opt input {
+    width: 200px;
+} */
 
 .settings-opt button {
     cursor: pointer;

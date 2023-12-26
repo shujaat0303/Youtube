@@ -9,5 +9,6 @@ urlpatterns=[
     path("channel/<int:c>",views.channel,name="channel"),
     path("login/",views.login,name="login"),
     path("signup/",views.signup,name="signup"),
-    path("settings/",views.settings,name="settings")
+    path("settings-p/",views.settingsp,name="settings-p"),
+    path("settings-c/",views.settingsc,name="settings-c")
 ]

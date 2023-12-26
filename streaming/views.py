@@ -18,5 +18,8 @@ def login(request):
 def signup(request):
     return render(request,"streaming/signup.html")
 
-def settings(request):
-    return render(request,"streaming/settings.html")
+def settingsp(request):
+    return render(request,"streaming/settings-p.html")
+
+def settingsc(request):
+    return render(request,"streaming/settings-c.html")
