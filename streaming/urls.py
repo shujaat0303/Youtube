@@ -10,8 +10,9 @@ urlpatterns=[
     path("",views.index,name="home"),
     path("watch/<int:v>",views.playVideo,name="playVideo"),
     path("channel/<int:c>",views.channel,name="channel"),
-    path("login/",views.login,name="login"),
-    path("signup/",views.signup,name="signup"),
+    path("login/",views.login_view,name="login"),
+    path("signup/",views.signup_view,name="signup"),
+    path("logout/",views.logout_view,name="logout"),
     path("settings/",views.settings,name="settings")
 ]
 

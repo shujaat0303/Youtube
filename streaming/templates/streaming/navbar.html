@@ -36,14 +36,14 @@
                 <hr>
                 <div class="dropdown-btns">
                     <a href="{% url 'settings' %}">SETTING</a>
-                    <a href="{% url 'login' %}">LOGOUT</a>
+                    <a href="{% url 'logout' %}">LOGOUT</a>
                 </div>
             </div>
         </div>
 
         {% else %}
-            <button type="button">Log in</button>
-            <button type="button">Sign up</button>
+            <a href="{% url 'login' %}">Log in</a>
+            <a  href="{% url 'signup' %}">Sign up</a>
         {% endif %}
 
     </div>

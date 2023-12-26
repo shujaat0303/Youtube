@@ -7,17 +7,24 @@
     <h4 class="google">YouTube</h4>
     <h4 class="signin">Sign in</h4>
     <p>to continue to YouTube</p>
-    <form action="">
-        <input type="text" placeholder="Email or phone" required><br><br>
-        <input type="password" placeholder="Password" required><br>
+    
+    <form action="{% url 'login' %}" method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <input autofocus class="form-control" type="text" name="username" placeholder="Username">
+        </div>
+        <div class="form-group">
+            <input class="form-control" type="password" name="password" placeholder="Password">
+        </div>
+        <div class="f-pass-div">
+            <a class="f-pass" href="">Forgot password?</a>
+        </div>
+        <div class="login-btn vid-flex">
+            <a href="{% url 'signup' %}">Create account</a>
+            <input type="submit" value="Log in">
+        </div>
+        
     </form>
-    <div class="f-pass-div">
-        <a class="f-pass" href="">Forgot password?</a>
-    </div>
-    <div class="login-btn vid-flex">
-        <a href="{% url 'signup' %}">Create account</a>
-        <button>Sign in</button>
-    </div>
 </div>
 
 {% endblock %}
