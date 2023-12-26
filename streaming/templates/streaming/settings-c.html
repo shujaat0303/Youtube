@@ -1,0 +1,52 @@
+{% extends "streaming/layout.html" %}
+
+
+{% block body %}
+
+<!-- Navbar -->
+{% include "streaming/navbar.html" %}
+
+<!-- Sidebar -->
+<div class="sidebar">
+    <div class="shortcut-links">
+        <a href="{% url 'settings-p' %}">
+            <p>Personal</p>
+        </a>
+        <a href="{% url 'settings-c' %}">
+            <p>Channel</p>
+        </a>
+        <hr>
+    </div>
+</div>
+
+
+<!-- Main -->
+<div class="container">
+    <div class="settings">
+        <img class="cover" src="{% static 'streaming/images/banner.png' %}" alt="channel-cover">
+        <img class="s-profile" src="{% static 'streaming/images/megan.png' %}" alt="channel-profile">
+        <div class="settings-opt">
+            <h2>Settings</h2>
+            <form action="">
+                <p>Channel Name: <span></span></p>
+                <input type="text" placeholder="New Channel Name">
+                <button>Update Channel Name</button>
+
+                <p>Description here</p><br>
+                <textarea class="s-des" name="" id="" cols="30" rows="10"
+                    placeholder="Enter New Description"></textarea>
+                <br>
+                <button>Update Description</button>
+
+                <br><br>
+                <input type="file">
+                <button>Update Profile Picture</button><br><br>
+                <input type="file">
+                <button>Update Cover Picture</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

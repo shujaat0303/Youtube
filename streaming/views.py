@@ -69,3 +69,9 @@ def logout_view(request):
 @login_required
 def settings(request):
     return render(request,"streaming/settings.html")
+    
+def settingsp(request):
+    return render(request,"streaming/settings-p.html")
+
+def settingsc(request):
+    return render(request,"streaming/settings-c.html")

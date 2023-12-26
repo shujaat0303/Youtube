@@ -13,7 +13,9 @@ urlpatterns=[
     path("login/",views.login_view,name="login"),
     path("signup/",views.signup_view,name="signup"),
     path("logout/",views.logout_view,name="logout"),
-    path("settings/",views.settings,name="settings")
+    path("settings-p/",views.settingsp,name="settings-p"),
+    path("settings-c/",views.settingsc,name="settings-c")
+
 ]
 
 if settings.DEBUG:

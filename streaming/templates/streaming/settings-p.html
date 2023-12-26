@@ -1,0 +1,52 @@
+{% extends "streaming/layout.html" %}
+
+
+{% block body %}
+
+<!-- Navbar -->
+{% include "streaming/navbar.html" %}
+
+<!-- Sidebar -->
+<div class="sidebar">
+    <div class="shortcut-links">
+        <a href="{% url 'settings-p' %}">
+            <p>Personal</p>
+        </a>
+        <a href="{% url 'settings-c' %}">
+            <p>Channel</p>
+        </a>
+        <hr>
+    </div>
+</div>
+
+
+<!-- Main -->
+<div class="container">
+    <div class="settings">
+        <img class="cover" src="{% static 'streaming/images/banner.png' %}" alt="channel-cover">
+        <img class="s-profile" src="{% static 'streaming/images/megan.png' %}" alt="channel-profile">
+        <div class="settings-opt">
+            <h2>Settings</h2>
+            <form action="">
+                <p>Username: <span></span></p>
+                <input type="text" placeholder="Enter New Username">
+                <button>Update Username</button>
+
+                <p>Email Address: <span></span></p>
+
+                <br>
+                <p>Phone Number: <span></span></p>
+                <input type="tel" placeholder="Enter New Phone">
+                <button>Update Phone</button>
+
+                <p>Password</p>
+                <input type="password" placeholder="Enter New password">
+                <input type="password" placeholder="Confirm password">
+                <button>Update Password</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
