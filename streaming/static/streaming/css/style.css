@@ -72,6 +72,21 @@ nav {
     width: 15px;
 }
 
+.nav-btn {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    background-color: cornflowerblue;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.nav-lbtn {
+    margin-right: 5px;
+}
+
 
 /* Sidebar */
 
@@ -567,10 +582,6 @@ nav {
 .login-button {
     margin-left: 150px;
     margin-right: 50px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    padding-left: 20px;
-    padding-right: 20px;
     background-color: cornflowerblue;
     color: #fff;
     border-radius: 5px;
