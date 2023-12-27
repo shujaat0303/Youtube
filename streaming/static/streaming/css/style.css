@@ -729,3 +729,29 @@ nav {
     font-size: 17px;
     color: #5a5a5a;
 }
+
+
+/* Upload */
+
+.upload-video {
+    background-color: aqua;
+}
+
+.u-description {
+    padding: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.u-description input, textarea {
+    padding: 7px;
+    margin-top: 15px;
+    width: 350px;
+}
+
+.u-vid {
+    padding: 10px;
+    background-color: black;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+}

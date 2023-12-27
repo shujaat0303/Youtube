@@ -75,3 +75,6 @@ def settingsp(request):
 
 def settingsc(request):
     return render(request,"streaming/settings-c.html")
+
+def upload(request):
+    return render(request,"streaming/uploadVideo.html")

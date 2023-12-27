@@ -14,8 +14,8 @@ urlpatterns=[
     path("signup/",views.signup_view,name="signup"),
     path("logout/",views.logout_view,name="logout"),
     path("settings-p/",views.settingsp,name="settings-p"),
-    path("settings-c/",views.settingsc,name="settings-c")
-
+    path("settings-c/",views.settingsc,name="settings-c"),
+    path("upload/",views.upload,name="upload")
 ]
 
 if settings.DEBUG:
