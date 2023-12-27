@@ -561,10 +561,12 @@ nav {
 .login-btn a {
     margin-left: 50px;
     color: #0000ff;
+    width: 700px;
 }
 
-.login-btn button {
+.login-button {
     margin-left: 150px;
+    margin-right: 50px;
     padding-top: 10px;
     padding-bottom: 10px;
     padding-left: 20px;
@@ -617,20 +619,17 @@ nav {
 .signup-btn {
     margin-top: 65px;
     padding-bottom: 65px;
-    display: flex;
 }
 
 .signup-btn a {
     margin-left: 50px;
     color: #0000ff;
+    width: 700px;
 }
 
-.signup-btn button {
+.signup-button {
     margin-left: 150px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    padding-left: 20px;
-    padding-right: 20px;
+    margin-right: 50px;
     background-color: cornflowerblue;
     color: #fff;
     border-radius: 5px;

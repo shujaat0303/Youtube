@@ -2,7 +2,7 @@
 
 {% block body %}
 
-<!-- Login -->
+<!-- Signup -->
 <div class="signup">
     <h4 class="google">YouTube</h4>
     <h4 class="signin">Sign up</h4>
@@ -11,12 +11,12 @@
         {% csrf_token %}
         <input type="text" name="username" placeholder="Username" autofocus required><br><br>
         <input type="email" name="email"  placeholder="Email" required><br><br>
-        <input type="password" name="password" placeholder="Password" required><br>
-        <input type="password" name="confirmation" placeholder="ConfirmPassword" required><br>
+        <input type="password" name="password" placeholder="Password" required><br><br>
+        <input type="password" name="confirmation" placeholder="Confirm Password" required><br>
 
         <div class="signup-btn vid-flex">
             <a href="{% url 'login' %}">Back to Sign in</a>
-            <input type = "submit" value="Sign up">
+            <input class="signup-button" type = "submit" value="Sign up">
         </div>
     </form>
     
