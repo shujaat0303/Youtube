@@ -14,9 +14,19 @@ def playVideo(request,v):
     #get video from database then send it to playVideo.html
     return render(request,"streaming/playVideo.html")
 
+def uploadVideo(request,v):
+    #get video from database then send it to playVideo.html
+    return render(request,"streaming/uploadVideo.html")
+
+
 def channel(request,c):
     #get channel data from database and pass to template
-    return render(request,"streaming/channel.html")
+    channel=Channel.objects.get(id=c)
+    if channel:
+        return render(request,"streaming/channel.html",{
+            "channel" : channel
+        })
+    return HttpResponse("404 error")
 
 def login_view(request):
     if request.method == "POST":
@@ -69,12 +79,15 @@ def logout_view(request):
 @login_required
 def settings(request):
     return render(request,"streaming/settings.html")
-    
+
+@login_required   
 def settingsp(request):
     return render(request,"streaming/settings-p.html")
 
+@login_required
 def settingsc(request):
     return render(request,"streaming/settings-c.html")
 
+@login_required
 def upload(request):
     return render(request,"streaming/uploadVideo.html")

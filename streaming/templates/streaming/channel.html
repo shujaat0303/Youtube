@@ -13,7 +13,11 @@
 <div class="container">
     <div class="channel">
         <img class="cover" src="{% static 'streaming/images/banner.png' %}" alt="channel-cover">
-        <img class="profile" src="{% static 'streaming/images/megan.png' %}" alt="channel-profile">
+        {% if user.profile_pic %}
+            <img class="profile" src="{{ user.profile_pic.url }}"  alt="user-icon" class="user-icon">
+        {% else %}
+            <img class="profile "src="{% static 'streaming/images/profile_placeholder.jpg' %}"  alt="user-icon" class="user-icon">
+        {% endif %}
         <div class="profile-div">
             <h2>ChannelName</h2>
             <div class="vid-flex channel-username">

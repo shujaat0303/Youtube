@@ -3,15 +3,15 @@ from django.db import models
 
 # Create your models here.
 
-
 class User(AbstractUser):
     profile_pic=models.FileField(upload_to='images/pp',default=None, blank=True, null=True)
     pass
 
+
 class Channel(models.Model):
-    by = models.ForeignKey(User, on_delete=models.CASCADE, related_name="channel")
+    by = models.OneToOneField(User, on_delete=models.CASCADE, related_name="channel", blank="True")
     name = models.CharField(max_length=20)
-    description = models.CharField(max_length=4000)
+    description = models.CharField(max_length = 4000)
     cover = models.FileField(upload_to='images/cover',default=None, blank=True, null=True)
 
 
@@ -25,9 +25,13 @@ class Video(models.Model):
     video = models.FileField(upload_to='videos/',default=None, blank=True, null=True)
 
 
-
 class Comment(models.Model):
     comment = models.CharField(max_length=4000)
     by = models.ForeignKey(User, on_delete=models.CASCADE)
     on = models.ForeignKey(Video, on_delete=models.CASCADE, related_name="comment")
     time = models.DateTimeField(auto_now_add=True)
+
+
+class Subscriptions(models.Model):
+    subscriber = models.ForeignKey(User, on_delete=models.CASCADE, related_name="subscribed_to")
+    channel = models.ForeignKey(Channel, on_delete=models.CASCADE)

@@ -22,16 +22,24 @@
     </div>
     <div class="nav-right vid-flex">
         {% if user.is_authenticated %}
-        <a href=""><img src="{% static 'streaming/images/upload.png' %}" alt="upload-icon"></a>
+        <a href="{% url 'upload' %}"><img src="{% static 'streaming/images/upload.png' %}" alt="upload-icon"></a>
         <a href=""><img src="{% static 'streaming/images/more.png' %}" alt="more-icon"></a>
         <a href=""><img src="{% static 'streaming/images/notification.png' %}" alt="notification-icon"></a>
 
         <div class="dropdown">
-            <img src="{% static 'streaming/images/Jack.png' %}" alt="user-icon" class="user-icon">
+            {% if user.profile_pic %}
+                <img src="{{ user.profile_pic.url }}"  alt="user-icon" class="user-icon">
+            {% else %}
+                <img src="{% static 'streaming/images/profile_placeholder.jpg' %}"  alt="user-icon" class="user-icon">
+            {% endif %}
             <div class="dropdown-content">
                 <div class="dropdown-profile vid-flex">
-                    <img class="profile" src="{% static 'streaming/images/megan.png' %}" alt="channel-profile">
-                    <h4>UserName</h4>
+                    {% if user.profile_pic %}
+                        <img class="profile" src="{{ user.profile_pic.url }}"  alt="user-icon" class="user-icon">
+                    {% else %}
+                        <img class="profile" src="{% static 'streaming/images/profile_placeholder.jpg' %}"  alt="user-icon" class="user-icon">
+                    {% endif %}
+                    <h4>@{{ user.username }}</h4>
                 </div>
                 <hr>
                 <div class="dropdown-btns">
@@ -40,7 +48,7 @@
                 </div>
             </div>
         </div>
-
+  
         {% else %}
             <a class="nav-btn nav-lbtn" href="{% url 'login' %}">Log in</a>
             <a class="nav-btn" href="{% url 'signup' %}">Sign up</a>
