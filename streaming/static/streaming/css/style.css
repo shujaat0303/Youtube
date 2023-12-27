@@ -113,8 +113,9 @@ nav {
     flex-wrap: wrap;
 }
 
-.shortcut-links a:first-child {
-    color: #ed3833;
+.shortcut-links a:hover {
+    padding-left: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
 }
 
 .sidebar hr {
@@ -712,10 +713,6 @@ nav {
     margin-bottom: 20px;
 }
 
-/* .settings-opt input {
-    width: 200px;
-} */
-
 .settings-opt button {
     cursor: pointer;
 }
@@ -726,4 +723,9 @@ nav {
     padding-bottom: 5px;
     padding-left: 10px;
     padding-right: 10px;
+}
+
+.settings-opt span {
+    font-size: 17px;
+    color: #5a5a5a;
 }
