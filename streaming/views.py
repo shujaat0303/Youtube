@@ -8,14 +8,24 @@ from .models import User,Channel,Video,Comment
 
 # Create your views here.
 def index(request):
-    return render(request,"streaming/index.html")
+    videos=Video.objects.all()
+    return render(request,"streaming/index.html",{
+        "videos":videos
+    })
 
 def playVideo(request,v):
     #get video from database then send it to playVideo.html
-    return render(request,"streaming/playVideo.html")
+    video=Video.objects.get(id=v)
+    recommendations = Video.objects.exclude(id=v)
+    return render(request,"streaming/playVideo.html",{
+        "video":video,
+        "recommendations":recommendations
+    })
 
+@login_required
 def uploadVideo(request,v):
     #get video from database then send it to playVideo.html
+    # take thumbnail, video and data and add to data base and redirect user to video 
     return render(request,"streaming/uploadVideo.html")
 
 

@@ -18,11 +18,12 @@ class Channel(models.Model):
 class Video(models.Model):
     title = models.CharField(max_length=100)
     description = models.CharField(max_length=4000)
-    Channel = models.ForeignKey(Channel, on_delete=models.CASCADE, related_name="video",)
-    date = models.DateTimeField(auto_now_add=True)
+    channel = models.ForeignKey(Channel, on_delete=models.CASCADE, related_name="video")
+    time = models.DateTimeField(auto_now_add=True)
     #TODO: Add media settings 
     thumbnail = models.FileField(upload_to='images/thumbnail',default=None, blank=True, null=True)
     video = models.FileField(upload_to='videos/',default=None, blank=True, null=True)
+    num_views = models.IntegerField(default=0)
 
 
 class Comment(models.Model):
@@ -30,8 +31,22 @@ class Comment(models.Model):
     by = models.ForeignKey(User, on_delete=models.CASCADE)
     on = models.ForeignKey(Video, on_delete=models.CASCADE, related_name="comment")
     time = models.DateTimeField(auto_now_add=True)
+    num_comments = models.IntegerField(default=0)
 
 
-class Subscriptions(models.Model):
+class Subscription(models.Model):
     subscriber = models.ForeignKey(User, on_delete=models.CASCADE, related_name="subscribed_to")
     channel = models.ForeignKey(Channel, on_delete=models.CASCADE)
+
+class Like(models.Model):
+    by = models.ForeignKey(User, on_delete=models.CASCADE)
+    on = models.ForeignKey(Video, on_delete=models.CASCADE)
+
+class WatchHistory(models.Model):
+    by = models.ForeignKey(User, on_delete=models.CASCADE)
+    on = models.ForeignKey(Video, on_delete=models.CASCADE)
+    time = models.DateTimeField(auto_now=True)
+
+
+
+

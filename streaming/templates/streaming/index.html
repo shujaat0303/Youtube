@@ -14,17 +14,19 @@
             <img src="{% static 'streaming/images/banner.png' %}" alt="banner">
         </div>
         <div class="list-container">
+            {% for video in videos %}
             <div class="video-list">
-                <a href="{% url 'playVideo' v=1%}"><img src="{% static 'streaming/images/thumbnail1.png' %}" alt="thumbnail" class="thumbnail"></a>
+                <a href="{% url 'playVideo' v=video.id%}"><img src="{{ video.thumbnail.url }}" alt="thumbnail" class="thumbnail"></a>
                 <div class="vid-flex">
-                    <img src="{% static 'streaming/images/Jack.png' %}" alt="user-icon">
+                    <img src="{{ video.channel.by.profile_pic.url }}" alt="user-icon">
                     <div class="vid-info">
-                        <a class="nav-link" href="{% url 'playVideo' v=1%}">Here any title of your video abcdefghijklmnopqrstuvwxyz</a>
-                        <p>Easy Tutorials</p>
-                        <p>100k Views &bull; 1 hour</p>
+                        <a class="nav-link" href="{% url 'playVideo' v=video.id%}">{{ video.title }}</a>
+                        <p>{{ video.channel.name }}</p>
+                        <p>100k Views &bull; {{ video.time|timesince }}</p>
                     </div>
                 </div>
             </div>
+            {% endfor %}
             <div class="video-list">
                 <a href=""><img src="{% static 'streaming/images/thumbnail2.png' %}" alt="thumbnail" class="thumbnail"></a>
                 <div class="vid-flex">
