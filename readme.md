@@ -10,5 +10,7 @@ Projects to do:
 
 
 Extra:
-1.Auto Thumbnail
-2.Video suggestions
+1. Auto Thumbnail
+2. Video suggestions
+
+
