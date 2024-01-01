@@ -38,6 +38,23 @@ def channel(request,c):
         })
     return HttpResponse("404 error")
 
+def search(request):
+    query=request.GET["search_query"]
+    if query:
+        channels = Channel.objects.filter(name__contains=query)
+        videos = Video.objects.filter(title__contains=query)
+        if channels or videos:
+            return render(request,"streaming/search.html",{
+                "channels":channels,
+                "videos":videos
+            })
+    
+    return render(request,"streaming/search.html",{
+        "message" : "No results found\nTry different keywords or remove search filters"
+    })
+
+    return HttpResponse("TODO")
+
 def login_view(request):
     if request.method == "POST":
         # Attempt to sign user in

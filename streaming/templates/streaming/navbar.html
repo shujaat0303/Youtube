@@ -10,8 +10,9 @@
     </div>
     <div class="nav-center vid-flex">
         <div class="search-box vid-flex">
-            <input type="text" placeholder="Search">
-            <img src="{% static 'streaming/images/search.png' %}" alt="search-icon">
+            
+                <form action="{% url 'search' %}"><input type="text" name="search_query" placeholder="Search"></form>
+                <img src="{% static 'streaming/images/search.png' %}" alt="search-icon">
         </div>
         <div class="mic-icon"><svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"
                 focusable="false" style="pointer-events: none; display: block; width: 100%; height: 100%;">

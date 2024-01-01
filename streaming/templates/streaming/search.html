@@ -1,0 +1,17 @@
+{% extends "streaming/layout.html" %}
+
+{% block body %}
+
+    <!-- Navbar -->
+    {% include "streaming/navbar.html" %}
+    
+    <!-- Sidebar -->
+    {% include "streaming/sidebar.html" %}
+
+    <!-- Main -->
+    {% if channels or videos %}
+    {% else %}
+        {{ message }}
+    {% endif %}
+
+{% endblock %}

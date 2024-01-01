@@ -197,6 +197,7 @@ nav {
 .video-list .thumbnail {
     width: 100%;
     border-radius: 5px;
+    
 }
 
 .video-list .vid-flex {
@@ -259,6 +260,7 @@ nav {
 
 .side-video-list .small-thumbnail {
     flex-basis: 49%;
+    
 }
 
 .side-video-list .vid-info {
