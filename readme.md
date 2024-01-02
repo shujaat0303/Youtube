@@ -4,7 +4,9 @@ Projects to do:
 3. search bar
 4. subscriptions
 5. like
-6. watch history
+6. comments
+7. watch history
+
 
 
 

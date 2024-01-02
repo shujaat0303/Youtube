@@ -18,7 +18,7 @@
             <div class="video-list">
                 <a href="{% url 'playVideo' v=video.id%}"><img src="{{ video.thumbnail.url }}" alt="thumbnail" class="thumbnail"></a>
                 <div class="vid-flex">
-                    <img src="{{ video.channel.by.profile_pic.url }}" alt="user-icon">
+                    <a href="{% url 'channel' c=video.channel.id %}"><img src="{{ video.channel.by.profile_pic.url }}" alt="user-icon"></a>
                     <div class="vid-info">
                         <a class="nav-link" href="{% url 'playVideo' v=video.id%}">{{ video.title }}</a>
                         <p>{{ video.channel.name }}</p>

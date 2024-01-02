@@ -13,38 +13,39 @@
 <div class="container">
     <div class="channel">
         <img class="cover" src="{% static 'streaming/images/banner.png' %}" alt="channel-cover">
-        {% if user.profile_pic %}
-            <img class="profile" src="{{ user.profile_pic.url }}"  alt="user-icon" class="user-icon">
+        {% if channel.by.profile_pic %}
+            <img class="profile" src="{{ channel.by.profile_pic.url }}"  alt="user-icon" class="user-icon">
         {% else %}
             <img class="profile "src="{% static 'streaming/images/profile_placeholder.jpg' %}"  alt="user-icon" class="user-icon">
         {% endif %}
         <div class="profile-div">
-            <h2>ChannelName</h2>
+            <h2>{{ channel.name }}</h2>
             <div class="vid-flex channel-username">
-                <p>@username</p>
+                <p>@{{ channel.by.username }}</p>
                 <span> &bull; 1M Subscribers</span>
                 <span> &bull; 400 Videos</span>
             </div>
             <div class="channel-des">
-                <p>Hi This is my channel and .....</p>
+                <p>{{ channel.description }}</p>
             </div>
             <button class="subscribe-btn" type="button">SUBSCRIBE</button>
         </div>
     </div>
     <div class="list-container">
+        {% for video in videos %}
         <div class="video-list">
-            <a href="{% url 'playVideo' v=1%}"><img src="{% static 'streaming/images/thumbnail1.png' %}" alt="thumbnail"
+            <a href="{% url 'playVideo' v=video.id%}"><img src="{{ video.thumbnail.url }}" alt="thumbnail"
                     class="thumbnail"></a>
             <div class="vid-flex">
-                <img src="{% static 'streaming/images/Jack.png' %}" alt="user-icon">
+                <a href="{% url 'channel' c=channel.id %}"><img src="{{ channel.by.profile_pic.url }}" alt="user-icon"></a>
                 <div class="vid-info">
-                    <a class="nav-link" href="{% url 'playVideo' v=1%}">Here any title of your video
-                        abcdefghijklmnopqrstuvwxyz</a>
-                    <p>Easy Tutorials</p>
-                    <p>100k Views &bull; 1 hour</p>
+                    <a class="nav-link" href="{% url 'playVideo' v=video.id%}">{{ video.title }}</a>
+                    <p>{{ video.channel.name }}</p>
+                    <p>100k Views &bull; {{ video.time|timesince }}</p>
                 </div>
             </div>
         </div>
+        {% endfor %}
         <div class="video-list">
             <a href="{% url 'playVideo' v=1%}"><img src="{% static 'streaming/images/thumbnail3.png' %}" alt="thumbnail"
                     class="thumbnail"></a>

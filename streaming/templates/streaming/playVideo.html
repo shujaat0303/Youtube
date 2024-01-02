@@ -1,5 +1,8 @@
 {% extends "streaming/layout.html" %}
 
+{% block title %}
+    <title>{{ video.title }}</title>
+{% endblock %}
 
 {% block body %}
 
@@ -28,7 +31,8 @@
                 </div>
                 <hr>
                 <div class="publisher">
-                    <img src="{{ video.channel.by.profile_pic.url }}" alt="user-icon">
+                    <a href="{% url 'channel' c=video.channel.id%}">
+                        <img src="{{ video.channel.by.profile_pic.url }}" alt="user-icon"></a>
                     <div>
                         <p>{{ video.channel.name }}</p>
                         <span>2.1k Subscribers</span>
@@ -82,12 +86,12 @@
             </div>
 
             <div class="right-sidebar">
-                {% for video in recommendations %}
+                {% for r in recommendations %}
                 <div class="side-video-list">
-                    <a href="" class="small-thumbnail"><img src="{{ video.thumbnail.url }}" alt="thumbnail"></a>
+                    <a href="{% url 'playVideo' v=r.id%}" class="small-thumbnail"><img src="{{ r.thumbnail.url }}" alt="thumbnail"></a>
                     <div class="vid-info">
-                        <a class="nav-link" href="{% url 'playVideo' v=video.id%}">{{ video.title }}</a>
-                        <p>{{ video.channel.name }}</p>
+                        <a class="nav-link" href="{% url 'playVideo' v=r.id%}">{{ r.title }}</a>
+                        <p>{{ r.channel.name }}</p>
                         <p>100k Views</p>
                     </div>
                 </div>
