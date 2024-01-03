@@ -287,12 +287,12 @@ nav {
     color: #5a5a5a;
 }
 
-.play-video .play-video-info a img {
+.play-video .play-video-info span img {
     width: 20px;
     margin-right: 8px;
 }
 
-.play-video .play-video-info a {
+.play-video .play-video-info span {
     display: inline-flex;
     align-items: center;
     margin-left: 15px;
@@ -473,6 +473,13 @@ nav {
     cursor: pointer;
 }
 
+
+
+#video-subscribe-btn.subscribed {
+    background-color: rgb(223, 223, 223);
+    color: grey;
+    /* Additional styles for the subscribed state */
+}
 
 /* Dropdown */
 

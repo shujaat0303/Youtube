@@ -7,7 +7,12 @@ from django.urls import reverse
 from .models import User,Channel,Video,Comment
 from django import forms
 
+# Forms
+class LikeForm(forms.Form):
+    video_id = forms.IntegerField()
 
+class SubscribeForm(forms.Form):
+    channel_id = forms.IntegerField()
 
 # Create your views here.
 def index(request):
@@ -20,9 +25,15 @@ def playVideo(request,v):
     #get video from database then send it to playVideo.html
     video=Video.objects.get(id=v)
     recommendations = Video.objects.exclude(id=v)
+    sub_form=SubscribeForm()
+    like_form=LikeForm()
+    subscribed= video.channel.is_user_subscribed(request.user)
     return render(request,"streaming/playVideo.html",{
         "video":video,
-        "recommendations":recommendations
+        "recommendations":recommendations,
+        "sub_form":sub_form,
+        "like_form":like_form,
+        "subscribed":subscribed
     })
 
 @login_required
@@ -62,6 +73,7 @@ def search(request):
 @require_POST
 def like_video(request):
     form = LikeForm(request.POST)
+    print(form.is_valid())
     if form.is_valid():
         video_id = form.cleaned_data['video_id']
         video = Video.objects.get(pk=video_id)
@@ -74,9 +86,10 @@ def like_video(request):
 @require_POST
 def subscribe_channel(request):
     form = SubscribeForm(request.POST)
+    print(form.is_valid())
     if form.is_valid():
         channel_id = form.cleaned_data['channel_id']
-        channel = User.objects.get(pk=channel_id)
+        channel = Channel.objects.get(pk=channel_id)
         channel.subscribers.add(request.user)
         return JsonResponse({'success': True})
     return JsonResponse({'success': False})

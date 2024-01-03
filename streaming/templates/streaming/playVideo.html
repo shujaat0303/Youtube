@@ -23,10 +23,18 @@
                 <div class="play-video-info">
                     <p>205k Views &bull; {{ video.time|timesince }}</p>
                     <div>
-                        <a href=""><img src="{% static 'streaming/images/like.png' %}" alt="like-icon">100k</a>
-                        <a href=""><img src="{% static 'streaming/images/dislike.png' %}" alt="dislike-icon"></a>
-                        <a href=""><img src="{% static 'streaming/images/share.png' %}" alt="share-icon">Share</a>
-                        <a href=""><img src="{% static 'streaming/images/save.png' %}" alt="save-icon">Save</a>
+                        <form id="likeForm" method="post" action="{% url 'like' %}">
+                            {% csrf_token %}
+    
+                            <input type="hidden" name="video_id" value="{{ video.id }}">
+                            <span><img src="{% static 'streaming/images/like.png' %}" name="like"
+                                alt="like-icon" onclick="submitForm('likeForm')">100k</span>
+                            <span><img src="{% static 'streaming/images/dislike.png' %}" alt="dislike-icon"></span>
+                            <span><img src="{% static 'streaming/images/share.png' %}" alt="share-icon">Share</span>
+                            <span><img src="{% static 'streaming/images/save.png' %}" alt="save-icon">Save</span>
+                        </form>
+                        
+                        
                     </div>
                 </div>
                 <hr>
@@ -37,12 +45,24 @@
                         <p>{{ video.channel.name }}</p>
                         <span>2.1k Subscribers</span>
                     </div>
-                    <button type="button">Subscribe</button>
+                    <!Subscribe Form>
+                    <form id="subscribeForm" method="post" action="{% url 'subscribe' %}">
+                        {% csrf_token %}
+                        <input type="hidden" name="channel_id" value="{{ video.channel.id }}">
+                        {% if subscribed %}
+                            <button type="button" id="video-subscribe-btn" class="subscribed" 
+                            onclick="submitForm('subscribeForm')">Subscribed</button>
+                        {% else %}
+                            <button type="button" id="video-subscribe-btn"  
+                            onclick="submitForm('subscribeForm')">Subscribe</button>
+                        {% endif %}
+                    </form>
                 </div>
                 <div class="vid-des">
                     <p>{{ video.description }}</p>
                     <p>Subscribe to my Channel</p>
                     <hr>
+                    <!Comment Form>
                     <h4>2.5 Comments</h4>
                     <div class="add-comment">
                         {% if user.profile_pic %}
@@ -107,5 +127,6 @@
             </div>
         </div>
     </div>
+    <script src="{% static 'streaming/js/submitForm.js' %}"></script>
 
 {% endblock %}

@@ -1,3 +1,7 @@
+TODO:
+complete subscribed and liked using serverside parameters and then requests
+
+
 Projects to do:
 1. upload video backend 
 2. channel details backend
@@ -14,5 +18,8 @@ Projects to do:
 Extra:
 1. Auto Thumbnail
 2. Video suggestions
+
+
+
 
 

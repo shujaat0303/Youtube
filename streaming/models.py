@@ -14,6 +14,10 @@ class Channel(models.Model):
     description = models.CharField(max_length = 4000)
     cover = models.FileField(upload_to='images/cover',default=None, blank=True, null=True)
     subscribers = models.ManyToManyField(User, related_name='subscribed_to', blank=True)
+    def is_user_subscribed(self, user):
+        return user in self.subscribers.all()
+
+
 
 
 class Video(models.Model):

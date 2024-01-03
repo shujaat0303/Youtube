@@ -16,7 +16,9 @@ urlpatterns=[
     path("settings-p/",views.settingsp,name="settings-p"),
     path("settings-c/",views.settingsc,name="settings-c"),
     path("upload/",views.upload,name="upload"),
-    path("results/",views.search, name='search')
+    path("results/",views.search, name='search'),
+    path("subscribe_channel/",views.subscribe_channel,name="subscribe"),
+    path("like_channel/",views.like_video,name="like")
 ]
 
 if settings.DEBUG:
