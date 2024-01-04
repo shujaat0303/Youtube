@@ -1,0 +1,68 @@
+{% extends "streaming/layout.html" %}
+
+{% block body %}
+
+<!-- Navbar -->
+{% include "streaming/navbar.html" %}
+
+<!-- Sidebar -->
+{% include "streaming/sidebar.html" %}
+
+<!-- Search -->
+<div class="search-bar">
+    <div class="s-side-video-list">
+        <div class="vid-flex">
+            <a href=""><img class="s-channel-pic" src="{% static 'streaming/images/cameron.png' %}" alt="thumbnail"></a>
+        </div>
+        <div class="s-vid-info s-channel-info">
+            <a class="nav-link" href="">Channel Name</a>
+            <p class="s-channel-info-v"><span>@Username</span> &bull; <span>1M subscribers</span></p><br>
+            <p class="s-channel-des">Description</p>
+            <div class="s-sub-btn-div">
+                <button class="s-sub-btn" type="button">Subscribe</button>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="s-side-video-list">
+        <a href="" class="small-thumbnail"><img src="{% static 'streaming/images/thumbnail2.png' %}" alt="thumbnail"></a>
+        <div class="s-vid-info">
+            <a class="nav-link" href="">Here any title of your videoabcdefghijklmnopqrstuvwxyz</a>
+            <p class="s-vid-info-v"><span>100k Views</span> &bull; <span>1 hour</span></p><br>
+            <div class="vid-flex">
+                <img src="{% static 'streaming/images/Jack.png' %}" alt="user-icon">
+                <p class="s-vid-title">Easy Tutorials</p>
+            </div>
+            <br>
+            <p class="s-vid-des">Description</p>
+        </div>
+    </div>
+    <div class="s-side-video-list">
+        <a href="" class="small-thumbnail"><img src="../images/thumbnail2.png" alt="thumbnail"></a>
+        <div class="s-vid-info">
+            <a class="nav-link" href="">Here any title of your videoabcdefghijklmnopqrstuvwxyz</a>
+            <p class="s-vid-info-v"><span>100k Views</span> &bull; <span>1 hour</span></p><br>
+            <div class="vid-flex">
+                <img src="../images/Jack.png" alt="user-icon">
+                <p class="s-vid-title">Easy Tutorials</p>
+            </div>
+            <br>
+            <p class="s-vid-des">Description</p>
+        </div>
+    </div>
+    <div class="s-side-video-list">
+        <a href="" class="small-thumbnail"><img src="../images/thumbnail2.png" alt="thumbnail"></a>
+        <div class="s-vid-info">
+            <a class="nav-link" href="">Here any title of your videoabcdefghijklmnopqrstuvwxyz</a>
+            <p class="s-vid-info-v"><span>100k Views</span> &bull; <span>1 hour</span></p><br>
+            <div class="vid-flex">
+                <img src="../images/Jack.png" alt="user-icon">
+                <p class="s-vid-title">Easy Tutorials</p>
+            </div>
+            <br>
+            <p class="s-vid-des">Description</p>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
