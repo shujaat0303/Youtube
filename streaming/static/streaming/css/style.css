@@ -895,3 +895,22 @@ nav {
 .liked{
     filter: invert(16%) sepia(37%) saturate(3521%) hue-rotate(205deg) brightness(93%) contrast(85%);
 }
+
+
+/* History */
+
+.history-title h2 {
+    font-size: 25px;
+    font-weight: 600;
+}
+
+.history-title hr {
+    margin-top: 15px;
+    border: 0;
+    height: 0.5px;
+    background: #ccc;
+}
+
+.history-title {
+    padding-bottom: 15px;
+}
