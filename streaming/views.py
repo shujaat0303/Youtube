@@ -14,6 +14,7 @@ class LikeForm(forms.Form):
 class SubscribeForm(forms.Form):
     channel_id = forms.IntegerField()
 
+
 # Create your views here.
 def index(request):
     videos=Video.objects.all()
@@ -28,12 +29,14 @@ def playVideo(request,v):
     sub_form=SubscribeForm()
     like_form=LikeForm()
     subscribed= video.channel.is_user_subscribed(request.user)
+    liked = video.has_user_liked(request.user)
     return render(request,"streaming/playVideo.html",{
         "video":video,
         "recommendations":recommendations,
         "sub_form":sub_form,
         "like_form":like_form,
-        "subscribed":subscribed
+        "subscribed":subscribed,
+        "liked" : liked
     })
 
 @login_required
@@ -77,7 +80,10 @@ def like_video(request):
     if form.is_valid():
         video_id = form.cleaned_data['video_id']
         video = Video.objects.get(pk=video_id)
-        video.likes.add(request.user)
+        if(video.has_user_liked(request.user)):
+            video.likes.remove(request.user)
+        else:
+            video.likes.add(request.user)
         return JsonResponse({'success': True})
     return JsonResponse({'success': False})
 
@@ -90,7 +96,10 @@ def subscribe_channel(request):
     if form.is_valid():
         channel_id = form.cleaned_data['channel_id']
         channel = Channel.objects.get(pk=channel_id)
-        channel.subscribers.add(request.user)
+        if(channel.is_user_subscribed(request.user)):
+            channel.subscribers.remove(request.user)
+        else:
+            channel.subscribers.add(request.user)
         return JsonResponse({'success': True})
     return JsonResponse({'success': False})
 

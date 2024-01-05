@@ -7,6 +7,8 @@
     </div>
     <div class="subscribed-list">
         <h3>SUBSCRIBED</h3>
-        <a href="{% url 'channel' c=1%}" class="nav-link"><img src="{% static 'streaming/images/Jack.png' %}" alt="user-icon"><p>Jack</p></a>
+        {% for s in user.subscribed_to.all %}
+            <a href="{% url 'channel' c=s.id %}" class="nav-link"><img src="{{ s.by.profile_pic.url }}" alt="user-icon"><p>{{ s.name }}</p></a>
+        {% endfor %}
     </div>
 </div>

@@ -786,6 +786,21 @@ nav {
     margin-bottom: 8px;
 }
 
+.s-side-channel-list {
+    margin-left: 200px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+}
+
+.s-side-channel-list .small-thumbnail {
+    flex-basis: 30%;
+}
+
+.s-side-channel-list .s-vid-info {
+    flex-basis: 68%;
+}
+
 .small-thumbnail img {
     width: 100%;
     border-radius: 10px;
@@ -874,4 +889,9 @@ nav {
     margin-left: 600px;
     position: absolute;
     top: 125px;
+}
+
+/*like button*/
+.liked{
+    filter: invert(16%) sepia(37%) saturate(3521%) hue-rotate(205deg) brightness(93%) contrast(85%);
 }

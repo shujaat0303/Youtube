@@ -27,8 +27,13 @@
                             {% csrf_token %}
     
                             <input type="hidden" name="video_id" value="{{ video.id }}">
-                            <span><img src="{% static 'streaming/images/like.png' %}" name="like"
-                                alt="like-icon" onclick="submitForm('likeForm')">100k</span>
+                            {% if liked %}
+                            <span><img src="{% static 'streaming/images/like.png' %}" id="like-btn" name="like" class="liked"
+                                alt="like-icon" onclick="likeForm()">100k</span>
+                            {% else %}
+                            <span><img src="{% static 'streaming/images/like.png' %}" id="like-btn" name="like"
+                                alt="like-icon" onclick="likeForm()">100k</span>
+                            {% endif %}
                             <span><img src="{% static 'streaming/images/dislike.png' %}" alt="dislike-icon"></span>
                             <span><img src="{% static 'streaming/images/share.png' %}" alt="share-icon">Share</span>
                             <span><img src="{% static 'streaming/images/save.png' %}" alt="save-icon">Save</span>
@@ -51,10 +56,10 @@
                         <input type="hidden" name="channel_id" value="{{ video.channel.id }}">
                         {% if subscribed %}
                             <button type="button" id="video-subscribe-btn" class="subscribed" 
-                            onclick="submitForm('subscribeForm')">Subscribed</button>
+                            onclick="subscribeForm()">Subscribed</button>
                         {% else %}
                             <button type="button" id="video-subscribe-btn"  
-                            onclick="submitForm('subscribeForm')">Subscribe</button>
+                            onclick="subscribeForm()">Subscribe</button>
                         {% endif %}
                     </form>
                 </div>

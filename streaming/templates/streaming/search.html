@@ -10,6 +10,53 @@
 
     <!-- Main -->
     {% if channels or videos %}
+        <!-- Search -->
+        <div class="search-bar">
+            {% for c in channels %}
+            <div class="s-side-channel-list">
+                <div class="vid-flex">
+                    <a href="{% url 'channel' c=c.id %}"><img class="s-channel-pic" src="{{ c.by.profile_pic.url }}" alt="thumbnail"></a>
+                </div>
+                <div class="s-vid-info s-channel-info">
+                    <a class="nav-link" href="{% url 'channel' c=c.id %}">{{ c.name }}</a>
+                    <p class="s-channel-info-v"><span>@{{ c.by.username }}</span> &bull; <span>1M subscribers</span></p><br>
+                    <p class="s-channel-des">{{ c.description }}</p>
+                    <div class="s-sub-btn-div">
+                        <button class="s-sub-btn" type="button">Subscribe</button>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            {% endfor %}
+            {% for v in videos %}
+            <div class="s-side-video-list">
+                <a href="{% url 'playVideo' v=v.id%}" class="small-thumbnail"><img src="{{ v.thumbnail.url }}" alt="thumbnail"></a>
+                <div class="s-vid-info">
+                    <a class="nav-link" href="{% url 'playVideo' v=v.id%}">{{ v.title }}</a>
+                    <p class="s-vid-info-v"><span>100k Views</span> &bull; <span>1 hour</span></p><br>
+                    <div class="vid-flex">
+                        <img src="{{ v.channel.by.profile_pic.url }}" alt="user-icon">
+                        <p class="s-vid-title">{{ v.channel.name }}</p>
+                    </div>
+                    <br>
+                    <p class="s-vid-des">{{ v.channel.description|truncatewords:20 }}</p>
+                </div>
+            </div>
+            {% endfor %}
+            <div class="s-side-video-list">
+                <a href="" class="small-thumbnail"><img src="../images/thumbnail2.png" alt="thumbnail"></a>
+                <div class="s-vid-info">
+                    <a class="nav-link" href="">Here any title of your videoabcdefghijklmnopqrstuvwxyz</a>
+                    <p class="s-vid-info-v"><span>100k Views</span> &bull; <span>1 hour</span></p><br>
+                    <div class="vid-flex">
+                        <img src="../images/Jack.png" alt="user-icon">
+                        <p class="s-vid-title">Easy Tutorials</p>
+                    </div>
+                    <br>
+                    <p class="s-vid-des">Description</p>
+                </div>
+            </div>
+        </div>
     {% else %}
         {{ message }}
     {% endif %}

@@ -29,6 +29,8 @@ class Video(models.Model):
     video = models.FileField(upload_to='videos/',default=None, blank=True, null=True)
     likes = models.ManyToManyField(User, related_name='video_likes', blank=True)
     num_views = models.IntegerField(default=0)
+    def has_user_liked(self, user):
+        return user in self.likes.all()
 
 
 class Comment(models.Model):
