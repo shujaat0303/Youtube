@@ -8,23 +8,30 @@
 
     <!-- Video Play -->
     <div class="container">
-        <div class="row">
-            <div class="upload-video">
-                <video src=""></video>
-            </div>
-
-            <div class="u-description">
-                <form action="">
-                    <input type="file" name="" id="">
-                    <a href="" class="u-vid">Add Video</a><br><br>
-                    <input type="text" name="" id="" placeholder="Title"><br><br>
-                    <textarea name="" id="" placeholder="Description"></textarea><br><br>
-                    <input type="file" name="" id="">
-                    <a href="" class="u-vid">Add Thumbnail</a><br><br><br>
-                    <a href="" class="u-vid">Upload Video</a>
-                </form>
-            </div>
+        <h2>Video Details</h2> <br>
+        <div >
+            <form method="post" action="{% url 'upload' %}" class="grid-container" enctype="multipart/form-data">
+                {{ form.errors }}
+                {% csrf_token %}
+                {{ form.channel.as_hidden }}
+                <div class="u-description left">
+                    {{form.title }} <br><br>
+                    {{form.description}} <br><br><br>
+                    <h3>Thumbnail</h3>
+                    {{form.thumbnail}} <br><br>
+                    <input type="submit" class="u-video" value="Upload">
+                </div>
+                <div class="upload_video right">
+                <div id="dropArea">
+                    <p>Drag and drop your video file here or click to choose one.</p>
+                    <input type="file" name="video" id="id_video" accept="video/*" style="display: none;">
+                </div>       
+                    
+                <video id="videoPlayer" controls></video>
+                </div>                                          
+            </form>
         </div>
     </div>
-
+    
+    <script src="{% static 'streaming/js/uploadAjax.js' %}"></script>
 {% endblock %}

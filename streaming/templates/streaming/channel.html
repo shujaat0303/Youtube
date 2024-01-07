@@ -28,7 +28,17 @@
             <div class="channel-des">
                 <p>{{ channel.description }}</p>
             </div>
-            <button class="subscribe-btn" type="button">SUBSCRIBE</button>
+            <form id="subscribeForm" method="post" action="{% url 'subscribe' %}">
+                {% csrf_token %}
+                <input type="hidden" name="channel_id" value="{{ channel.id }}">
+                {% if subscribed %}
+                    <button type="button" id="subscribe-btn" class="subscribed" 
+                    onclick="subscribeForm()">SUBSCRIBED</button>
+                {% else %}
+                    <button type="button" id="subscribe-btn"  
+                    onclick="subscribeForm()">SUBSCRIBE</button>
+                {% endif %}
+            </form>
         </div>
     </div>
     <div class="list-container">
@@ -88,4 +98,5 @@
     </div>
 </div>
 
+<script src="{% static 'streaming/js/channelAjax.js' %}"></script>
 {% endblock %}

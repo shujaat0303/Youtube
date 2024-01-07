@@ -1,20 +1,3 @@
-function submitForm(formId) {
-    $.ajax({
-        url: $('#' + formId).attr('action'),
-        type: 'POST',
-        data: $('#' + formId).serialize(),
-        success: function(response) {
-            // Handle success, e.g., update UI dynamically
-            handleSubscribeResponse(response);
-            console.log(response);
-        },
-        error: function(error) {
-            // Handle error
-            console.log(error);
-        }
-    });
-}
-
 
 
 // Function to toggle between subscribing and unsubscribing

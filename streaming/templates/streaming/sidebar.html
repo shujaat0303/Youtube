@@ -2,7 +2,7 @@
     <div class="shortcut-links">
         <a href="{% url 'home' %}"><img src="{% static 'streaming/images/home.png' %}" alt=""><p>Home</p></a>
         <a href="{% url 'upload' %}"><img src="{% static 'streaming/images/subscriprion.png' %}" alt=""><p>Subscriprion</p></a>
-        <a href=""><img src="{% static 'streaming/images/history.png' %}" alt=""><p>History</p></a>
+        <a href="{% url 'history' %}"><img src="{% static 'streaming/images/history.png' %}" alt=""><p>History</p></a>
         <hr>
     </div>
     <div class="subscribed-list">

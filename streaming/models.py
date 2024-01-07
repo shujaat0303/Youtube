@@ -1,4 +1,5 @@
 from django.contrib.auth.models import AbstractUser
+from django.core.validators import FileExtensionValidator
 from django.db import models
 
 # Create your models here.
@@ -18,15 +19,19 @@ class Channel(models.Model):
         return user in self.subscribers.all()
 
 
-
-
 class Video(models.Model):
     title = models.CharField(max_length=100)
     description = models.CharField(max_length=4000)
     channel = models.ForeignKey(Channel, on_delete=models.CASCADE, related_name="video")
     time = models.DateTimeField(auto_now_add=True)
-    thumbnail = models.FileField(upload_to='images/thumbnail',default=None, blank=True, null=True)
-    video = models.FileField(upload_to='videos/',default=None, blank=True, null=True)
+    thumbnail = models.FileField(upload_to='images/thumbnail',default=None, null=True,
+        validators=[
+            FileExtensionValidator(allowed_extensions=['jpg', 'jpeg', 'png']),
+            ])
+    video = models.FileField(upload_to='videos/',default=None, null=True,
+        validators=[
+            FileExtensionValidator(allowed_extensions=['mp4', 'avi', 'mkv']),
+            ])
     likes = models.ManyToManyField(User, related_name='video_likes', blank=True)
     num_views = models.IntegerField(default=0)
     def has_user_liked(self, user):

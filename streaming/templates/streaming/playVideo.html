@@ -13,7 +13,7 @@
     <div class="container play-container">
         <div class="row">
             <div class="play-video">
-                <video controls autoplay src="{{ video.video.url }}">
+                <video controls autoplay class="video-frame" src="{{ video.video.url }}">
                 </video>
                 <div class="tags">
                     <a href="">#Tags</a> <a href="">#Tags</a> <a href="">#Tags</a> <a href="">#Tags</a> <a
@@ -37,9 +37,7 @@
                             <span><img src="{% static 'streaming/images/dislike.png' %}" alt="dislike-icon"></span>
                             <span><img src="{% static 'streaming/images/share.png' %}" alt="share-icon">Share</span>
                             <span><img src="{% static 'streaming/images/save.png' %}" alt="save-icon">Save</span>
-                        </form>
-                        
-                        
+                        </form>                       
                     </div>
                 </div>
                 <hr>
@@ -132,6 +130,6 @@
             </div>
         </div>
     </div>
-    <script src="{% static 'streaming/js/submitForm.js' %}"></script>
+    <script src="{% static 'streaming/js/videoAjax.js' %}"></script>
 
 {% endblock %}

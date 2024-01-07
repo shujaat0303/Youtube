@@ -18,7 +18,8 @@ urlpatterns=[
     path("upload/",views.upload,name="upload"),
     path("results/",views.search, name='search'),
     path("subscribe_channel/",views.subscribe_channel,name="subscribe"),
-    path("like_channel/",views.like_video,name="like")
+    path("like_channel/",views.like_video,name="like"),
+    path("history/",views.history,name="history")
 ]
 
 if settings.DEBUG:

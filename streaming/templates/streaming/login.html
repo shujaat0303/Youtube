@@ -26,7 +26,7 @@
             <a href="{% url 'signup' %}">Create account</a>
             <input class="login-button" type="submit" value="Log in">
         </div>
-        
+        <input type="hidden" name="next" value="{{ request.GET.next }}">
     </form>
 </div>
 

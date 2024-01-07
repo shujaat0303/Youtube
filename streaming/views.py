@@ -12,15 +12,42 @@ class LikeForm(forms.Form):
     video_id = forms.IntegerField()
 
 class SubscribeForm(forms.Form):
-    channel_id = forms.IntegerField()
+    channel_id = forms.IntegerField()      
+
+class VideoForm(forms.ModelForm):
+    class Meta:
+        model=Video
+        fields =['title','description','channel','thumbnail','video']
+        widgets={"title":forms.TextInput(attrs={'placeholder': 'Title'}),
+                "description":forms.Textarea(attrs={"cols":6,"rows":7, "class": "u-description","placeholder":"Description"}),
+                "thumbnail": forms.ClearableFileInput(attrs={'accept': 'image/*'})}
+
+    def __init__(self, *args, **kwargs):
+        user = kwargs.pop('user', None)
+        super(VideoForm, self).__init__(*args, **kwargs)
+
+    # Pre-populate form fields with user attributes
+        if user:
+            self.fields['channel'].initial = user.channel
 
 
+class ChannelForm(forms.ModelForm):
+    class Meta:
+        model=Channel
+        fields = ['by','name','description','cover']
+        widgets={"name":forms.TextInput(attrs={'placeholder': 'Channel Name'}),
+                "description":forms.Textarea(attrs={"cols":8,"rows":10, "class": "s-des","placeholder":"Description"}),}
+
+        
+
+    
 # Create your views here.
 def index(request):
     videos=Video.objects.all()
     return render(request,"streaming/index.html",{
         "videos":videos
     })
+
 
 def playVideo(request,v):
     #get video from database then send it to playVideo.html
@@ -39,10 +66,22 @@ def playVideo(request,v):
         "liked" : liked
     })
 
+
 @login_required
 def upload(request):
     # take thumbnail, video and data and add to data base and redirect user to video 
-    return render(request,"streaming/uploadVideo.html")
+    if request.POST:
+        context=VideoForm(data=request.POST,files=request.FILES)
+        if context.is_valid() and context.cleaned_data["channel"]==request.user.channel:
+            context.save()
+            return redirect('home')
+        return render(request,"streaming/uploadVideo.html",{
+            "form":context
+        })
+    form=VideoForm(user=request.user)
+    return render(request,"streaming/uploadVideo.html",{
+        "form": form
+    })
 
 
 def channel(request,c):
@@ -50,11 +89,15 @@ def channel(request,c):
     channel=Channel.objects.get(id=c)
     videos = Video.objects.filter(channel=c)
     if channel:
+        if request.user is not None:
+            subscribed=channel.is_user_subscribed(request.user)
         return render(request,"streaming/channel.html",{
             "channel" : channel,
-            "videos"   : videos
+            "videos"   : videos,
+            "subscribed":subscribed
         })
     return HttpResponse("404 error")
+
 
 def search(request):
     query=request.GET["search_query"]
@@ -103,6 +146,12 @@ def subscribe_channel(request):
         return JsonResponse({'success': True})
     return JsonResponse({'success': False})
 
+
+@login_required(login_url='login')
+def history(request):
+    return render(request,"streaming/history.html")
+
+
 def login_view(request):
     if request.method == "POST":
         # Attempt to sign user in
@@ -113,6 +162,9 @@ def login_view(request):
         # Check if authentication successful
         if user is not None:
             login(request, user)
+            redirect_page=request.POST["next"]
+            if redirect_page:
+                return HttpResponseRedirect(redirect_page)
             return HttpResponseRedirect(reverse("home"))
         else:
             return render(request, "streaming/login.html", {
@@ -120,6 +172,7 @@ def login_view(request):
             })
     else:
         return render(request,"streaming/login.html")
+
 
 def signup_view(request):
     if request.method == "POST":
@@ -147,19 +200,47 @@ def signup_view(request):
     else:
         return render(request,"streaming/signup.html")
 
+
 def logout_view(request):
     logout(request)
     return HttpResponseRedirect(reverse("home"))
+
 
 @login_required
 def settings(request):
     return render(request,"streaming/settings.html")
 
+
 @login_required   
 def settingsp(request):
     return render(request,"streaming/settings-p.html")
 
+
 @login_required
 def settingsc(request):
-    return render(request,"streaming/settings-c.html")
+    if request.POST:
+        context=ChannelForm(request.POST)
+        channel=Channel.objects.get(by=request.user)
+        if context.is_valid():
+            if channel:
+                name=context.cleaned_data["name"]
+                description=context.cleaned_data["description"]
+                cover=context.cleaned_data["cover"]
+                channel=Channel(by=request.user,name=name,description=description,cover=cover)
+                channel.save()
+            else:
+                context.save()
+            redirect('channel', c=request.user.channel.id)
+        return render(request,"streaming/settings-c.html",{
+            "form":context
+        })
+    channel = request.user.channel
+    if channel:
+        form=ChannelForm(initial={'by':channel.by,'name':channel.name,
+                'description':channel.description,'cover':channel.cover})
+    else:
+        form=ChannelForm(initial={'by':request.user})
+    return render(request,"streaming/settings-c.html",{
+        "form":form
+    })
 

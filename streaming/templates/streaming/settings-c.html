@@ -27,23 +27,27 @@
         <img class="s-profile" src="{% static 'streaming/images/megan.png' %}" alt="channel-profile">
         <div class="settings-opt">
             <h2>Settings</h2>
-            <form action="">
+            <form method="post" action="{% url 'settings-c' %}">
+                {% csrf_token %}
+                {{ form.errors }}
+                {{ form.by.as_hidden }} 
                 <p>Channel Name: <span></span></p>
-                <input type="text" placeholder="New Channel Name">
-                <button>Update Channel Name</button>
+                {{ form.name }}
 
                 <p>Description here</p><br>
-                <textarea class="s-des" name="" id="" cols="30" rows="10"
-                    placeholder="Enter New Description"></textarea>
+                {{ form.description }}
                 <br>
-                <button>Update Description</button>
 
                 <br><br>
-                <input type="file">
-                <button>Update Profile Picture</button><br><br>
-                <input type="file">
-                <button>Update Cover Picture</button>
+                <p>Cover</p><br>
+                {{ form.cover }}
+                <br>
+                <input type="submit" value="Update" >
             </form>
+
+            {% for field in form %}
+            {{ field }}
+            {% endfor %}
         </div>
     </div>
 </div>
