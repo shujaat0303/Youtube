@@ -1,8 +1,9 @@
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.http import require_POST
-from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth import authenticate, login, logout,update_session_auth_hash
 from django.http import HttpResponse, HttpResponseRedirect,JsonResponse
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect,get_object_or_404
+from django.contrib.auth.forms import PasswordChangeForm
 from django.urls import reverse
 from .models import User,Channel,Video,Comment
 from django import forms
@@ -39,7 +40,11 @@ class ChannelForm(forms.ModelForm):
                 "description":forms.Textarea(attrs={"cols":8,"rows":10, "class": "s-des","placeholder":"Description"}),}
 
         
-
+class UserForm(forms.ModelForm):
+    class Meta:
+        model=User
+        fields=["username","profile_pic"]
+        widgets={"username":forms.TextInput(attrs={'placeholder': 'Username'}),}
     
 # Create your views here.
 def index(request):
@@ -70,6 +75,9 @@ def playVideo(request,v):
 @login_required
 def upload(request):
     # take thumbnail, video and data and add to data base and redirect user to video 
+    channel= Channel.objects.filter(by=request.user).exists()
+    if not channel:
+        return redirect("settings-c")
     if request.POST:
         context=VideoForm(data=request.POST,files=request.FILES)
         if context.is_valid() and context.cleaned_data["channel"]==request.user.channel:
@@ -211,31 +219,51 @@ def settings(request):
     return render(request,"streaming/settings.html")
 
 
-@login_required   
+# views.py
+@login_required
 def settingsp(request):
-    return render(request,"streaming/settings-p.html")
+    if request.method == "POST":
+        user_form = UserForm(request.POST, request.FILES, instance=request.user)
+        password_form = PasswordChangeForm(request.user, request.POST)
+
+        if 'update_user' in request.POST and user_form.is_valid():
+            user_form.save()
+        elif 'change_password' in request.POST and password_form.is_valid():
+            password_form.save()
+        else:
+            return render(request, "streaming/settings-p.html", {
+                "user_form": user_form,
+                "password_form": password_form})
+
+        # Update the user's session to prevent them from being logged out
+        update_session_auth_hash(request, request.user)
+            
+        return HttpResponseRedirect(reverse("home"))
+    else:
+        user_form = UserForm(instance=request.user)
+        password_form = PasswordChangeForm(request.user)
+
+    return render(request, "streaming/settings-p.html", {
+        "user_form": user_form,
+        "password_form": password_form
+    })
 
 
 @login_required
 def settingsc(request):
     if request.POST:
-        context=ChannelForm(request.POST)
-        channel=Channel.objects.get(by=request.user)
+        channel= get_object_or_404(Channel, pk=request.user.channel.id)
+        context=ChannelForm(request.POST,request.FILES,instance=channel)
         if context.is_valid():
-            if channel:
-                name=context.cleaned_data["name"]
-                description=context.cleaned_data["description"]
-                cover=context.cleaned_data["cover"]
-                channel=Channel(by=request.user,name=name,description=description,cover=cover)
-                channel.save()
-            else:
-                context.save()
-            redirect('channel', c=request.user.channel.id)
+            context.save()
+            return HttpResponseRedirect(reverse("channel",args=[channel.id])) 
         return render(request,"streaming/settings-c.html",{
             "form":context
         })
-    channel = request.user.channel
-    if channel:
+        
+    haschannel = hasattr(request.user,"channel")  
+    if haschannel:
+        channel = request.user.channel
         form=ChannelForm(initial={'by':channel.by,'name':channel.name,
                 'description':channel.description,'cover':channel.cover})
     else:

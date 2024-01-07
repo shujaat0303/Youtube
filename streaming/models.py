@@ -17,6 +17,7 @@ class Channel(models.Model):
     subscribers = models.ManyToManyField(User, related_name='subscribed_to', blank=True)
     def is_user_subscribed(self, user):
         return user in self.subscribers.all()
+    
 
 
 class Video(models.Model):

@@ -23,11 +23,15 @@
 <!-- Main -->
 <div class="container">
     <div class="settings">
-        <img class="cover" src="{% static 'streaming/images/banner.png' %}" alt="channel-cover">
-        <img class="s-profile" src="{% static 'streaming/images/megan.png' %}" alt="channel-profile">
+       {% if user.channel.cover %}
+       <img class="cover" src="{{ user.channel.cover.url }}" alt="channel-cover">
+       {% endif %}
+       {% if user.profile_pic %}
+       <img class="profile" src="{{ user.profile_pic.url }}"  alt="user-icon" class="user-icon">
+        {% endif %}
         <div class="settings-opt">
             <h2>Settings</h2>
-            <form method="post" action="{% url 'settings-c' %}">
+            <form method="post" action="{% url 'settings-c' %}" enctype="multipart/form-data">
                 {% csrf_token %}
                 {{ form.errors }}
                 {{ form.by.as_hidden }} 
@@ -44,10 +48,6 @@
                 <br>
                 <input type="submit" value="Update" >
             </form>
-
-            {% for field in form %}
-            {{ field }}
-            {% endfor %}
         </div>
     </div>
 </div>
