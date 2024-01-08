@@ -1,7 +1,7 @@
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.http import require_POST
 from django.contrib.auth import authenticate, login, logout,update_session_auth_hash
-from django.http import HttpResponse, HttpResponseRedirect,JsonResponse
+from django.http import HttpResponse, HttpResponseRedirect,JsonResponse,Http404
 from django.shortcuts import render,redirect,get_object_or_404
 from django.contrib.auth.forms import PasswordChangeForm
 from django.template.loader import render_to_string
@@ -293,24 +293,32 @@ def settingsp(request):
 
 @login_required(login_url='login')
 def settingsc(request):
-    if request.POST:
-        channel= get_object_or_404(Channel, pk=request.user.channel.id)
-        context=ChannelForm(request.POST,request.FILES,instance=channel)
-        if context.is_valid():
-            context.save()
-            return HttpResponseRedirect(reverse("channel",args=[channel.id])) 
-        return render(request,"streaming/settings-c.html",{
-            "form":context
-        })
-        
-    haschannel = hasattr(request.user,"channel")  
+    try:
+        # Attempt to get an existing channel
+        channel = get_object_or_404(Channel, by=request.user)
+
+        # Existing channel found, update it
+        form = ChannelForm(request.POST, request.FILES, instance=channel)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(reverse("channel", args=[channel.id])) 
+
+    except Http404:
+        # Channel doesn't exist, create a new one
+        form = ChannelForm(request.POST, request.FILES)
+        if form.is_valid():
+            channel = form.save(commit=False)
+            channel.by = request.user
+            channel.save()
+            return HttpResponseRedirect(reverse("channel", args=[channel.id])) 
+
+    # Rendering the form when there's an error or for a new channel
+    haschannel = hasattr(request.user, "channel")  
     if haschannel:
         channel = request.user.channel
-        form=ChannelForm(initial={'by':channel.by,'name':channel.name,
-                'description':channel.description,'cover':channel.cover})
+        form = ChannelForm(initial={'by': channel.by, 'name': channel.name,
+                                    'description': channel.description, 'cover': channel.cover})
     else:
-        form=ChannelForm(initial={'by':request.user})
-    return render(request,"streaming/settings-c.html",{
-        "form":form
-    })
-
+        form = ChannelForm(initial={'by': request.user})
+    
+    return render(request, "streaming/settings-c.html", {"form": form})
