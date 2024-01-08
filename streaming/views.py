@@ -71,9 +71,12 @@ def playVideo(request,v):
             by=request.user,
             on=video,
         )
-
     if not created:
         watch_history.save()
+
+    #update num views of a video
+    video.num_views=video.num_views+1
+    video.save()
     recommendations = Video.objects.exclude(id=v)
     sub_form=SubscribeForm()
     like_form=LikeForm()
@@ -170,7 +173,7 @@ def comment_video(request):
         comment.save()
 
         # Update num_comments in the associated video
-        comment.on.num_comments = Comment.objects.filter(on=comment.on).count()
+        #comment.on.num_comments = Comment.objects.filter(on=comment.on).count()
         comment.on.save()
 
         return JsonResponse({'success': True, 'comment_id': comment.id, 'comment_html': render_to_string('streaming/comment_partial.html', {'comment': comment})})

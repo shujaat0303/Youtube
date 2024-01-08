@@ -36,6 +36,7 @@ class Video(models.Model):
             ])
     likes = models.ManyToManyField(User, related_name='video_likes', blank=True)
     num_views = models.IntegerField(default=0)
+    num_comments = models.IntegerField(default=0)
     def has_user_liked(self, user):
         return user in self.likes.all()
 
@@ -45,7 +46,6 @@ class Comment(models.Model):
     by = models.ForeignKey(User, on_delete=models.CASCADE)
     on = models.ForeignKey(Video, on_delete=models.CASCADE, related_name="comment")
     time = models.DateTimeField(auto_now_add=True)
-    num_comments = models.IntegerField(default=0)
 
 
 class WatchHistory(models.Model):

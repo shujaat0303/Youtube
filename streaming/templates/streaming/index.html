@@ -22,12 +22,12 @@
                     <div class="vid-info">
                         <a class="nav-link" href="{% url 'playVideo' v=video.id%}">{{ video.title }}</a>
                         <p>{{ video.channel.name }}</p>
-                        <p>100k Views &bull; {{ video.time|timesince }}</p>
+                        <p>{{ video.num_views }} Views &bull; {{ video.time|timesince }}</p>
                     </div>
                 </div>
             </div>
             {% endfor %}
-            
+           
         </div>
         
     </div>    

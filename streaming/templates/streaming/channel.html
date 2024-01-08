@@ -27,7 +27,7 @@
             <h2>{{ channel.name }}</h2>
             <div class="vid-flex channel-username">
                 <p>@{{ channel.by.username }}</p>
-                <span> &bull; 1M Subscribers</span>
+                <span> &bull; {{ channel.subscribers.all|length }} Subscribers</span>
                 <span> &bull; 400 Videos</span>
             </div>
             <div class="channel-des">
@@ -56,7 +56,7 @@
                 <div class="vid-info">
                     <a class="nav-link" href="{% url 'playVideo' v=video.id%}">{{ video.title }}</a>
                     <p>{{ video.channel.name }}</p>
-                    <p>100k Views &bull; {{ video.time|timesince }}</p>
+                    <p>{{ video.num_views }} Views &bull; {{ video.time|timesince }}</p>
                 </div>
             </div>
         </div>
