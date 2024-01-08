@@ -12,7 +12,12 @@
 <!-- Main -->
 <div class="container">
     <div class="channel">
-        <img class="cover" src="{{ channel.cover.url }}" alt="channel-cover">
+        {% if channel.cover %}
+       <img class="cover" src="{{ channel.cover.url }}" alt="channel-cover">
+       {% else %}
+       <img class="cover" src="{% static 'streaming/images/banner.png' %}" alt="channel-cover">
+
+       {% endif %}
         {% if channel.by.profile_pic %}
             <img class="profile" src="{{ channel.by.profile_pic.url }}"  alt="user-icon" class="user-icon">
         {% else %}

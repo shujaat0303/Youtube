@@ -1,0 +1,18 @@
+
+<div class="old-comments">
+    {% if  comment.by.profile_pic %}
+    <img src="{{ comment.by.profile_pic.url }}" alt="user-icon">
+    {% else %}
+    <img src="{% static 'streaming/images/profile_placeholder.jpg' %}" alt="user-icon">
+    {% endif %}
+    <div>
+        <h3>{{ comment.by.username }} <span>{{ comment.time|timesince }}</span></h3>
+        <p>{{ comment.comment }}</p>
+        <div class="comment-action">
+            <img src="{% static 'streaming/images/like.png' %}" alt="like-icon">
+            <span>0</span>
+            <img src="{% static 'streaming/images/dislike.png' %}" alt="dislike-icon">
+            <span>0</span>
+        </div>
+    </div>
+</div>

@@ -4,8 +4,9 @@ from django.contrib.auth import authenticate, login, logout,update_session_auth_
 from django.http import HttpResponse, HttpResponseRedirect,JsonResponse
 from django.shortcuts import render,redirect,get_object_or_404
 from django.contrib.auth.forms import PasswordChangeForm
+from django.template.loader import render_to_string
 from django.urls import reverse
-from .models import User,Channel,Video,Comment
+from .models import User,Channel,Video,Comment,WatchHistory
 from django import forms
 
 # Forms
@@ -46,6 +47,13 @@ class UserForm(forms.ModelForm):
         fields=["username","profile_pic"]
         widgets={"username":forms.TextInput(attrs={'placeholder': 'Username'}),}
     
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model=Comment
+        fields=["comment","on"]
+        widgets={"comment":forms.TextInput(attrs={'placeholder': 'Write your comment...'}),}
+
+
 # Create your views here.
 def index(request):
     videos=Video.objects.all()
@@ -55,24 +63,38 @@ def index(request):
 
 
 def playVideo(request,v):
-    #get video from database then send it to playVideo.html
+
+    # get video from database then send it to playVideo.html
     video=Video.objects.get(id=v)
+    # update watch history
+    watch_history,created = WatchHistory.objects.get_or_create(
+            by=request.user,
+            on=video,
+        )
+
+    if not created:
+        watch_history.save()
     recommendations = Video.objects.exclude(id=v)
     sub_form=SubscribeForm()
     like_form=LikeForm()
+    comment_form=CommentForm(initial={"on":video})
     subscribed= video.channel.is_user_subscribed(request.user)
     liked = video.has_user_liked(request.user)
+    comments= Comment.objects.filter(on=video).order_by('-time')
+    
     return render(request,"streaming/playVideo.html",{
         "video":video,
         "recommendations":recommendations,
         "sub_form":sub_form,
         "like_form":like_form,
         "subscribed":subscribed,
-        "liked" : liked
+        "liked" : liked,
+        "comment_form":comment_form,
+        "comments":comments
     })
 
 
-@login_required
+@login_required(login_url='login')
 def upload(request):
     # take thumbnail, video and data and add to data base and redirect user to video 
     channel= Channel.objects.filter(by=request.user).exists()
@@ -123,11 +145,10 @@ def search(request):
     })
 
 
-@login_required
+@login_required(login_url='login')
 @require_POST
 def like_video(request):
     form = LikeForm(request.POST)
-    print(form.is_valid())
     if form.is_valid():
         video_id = form.cleaned_data['video_id']
         video = Video.objects.get(pk=video_id)
@@ -138,8 +159,26 @@ def like_video(request):
         return JsonResponse({'success': True})
     return JsonResponse({'success': False})
 
+@login_required(login_url='login')
+@require_POST
+def comment_video(request):
+    comment_form = CommentForm(request.POST)
+    if comment_form.is_valid():
+    # Save the comment
+        comment = comment_form.save(commit=False)
+        comment.by = request.user
+        comment.save()
 
-@login_required
+        # Update num_comments in the associated video
+        comment.on.num_comments = Comment.objects.filter(on=comment.on).count()
+        comment.on.save()
+
+        return JsonResponse({'success': True, 'comment_id': comment.id, 'comment_html': render_to_string('streaming/comment_partial.html', {'comment': comment})})
+    else:
+        return JsonResponse({'success': False, 'errors': comment_form.errors})
+
+
+@login_required(login_url='login')
 @require_POST
 def subscribe_channel(request):
     form = SubscribeForm(request.POST)
@@ -157,7 +196,10 @@ def subscribe_channel(request):
 
 @login_required(login_url='login')
 def history(request):
-    return render(request,"streaming/history.html")
+    history=WatchHistory.objects.filter(by=request.user).order_by('-time')
+    return render(request,"streaming/history.html",{
+        'history':history
+    })
 
 
 def login_view(request):
@@ -214,13 +256,13 @@ def logout_view(request):
     return HttpResponseRedirect(reverse("home"))
 
 
-@login_required
+@login_required(login_url='login')
 def settings(request):
     return render(request,"streaming/settings.html")
 
 
 # views.py
-@login_required
+@login_required(login_url='login')
 def settingsp(request):
     if request.method == "POST":
         user_form = UserForm(request.POST, request.FILES, instance=request.user)
@@ -249,7 +291,7 @@ def settingsp(request):
     })
 
 
-@login_required
+@login_required(login_url='login')
 def settingsc(request):
     if request.POST:
         channel= get_object_or_404(Channel, pk=request.user.channel.id)

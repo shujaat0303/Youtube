@@ -1,6 +1,7 @@
 from django.contrib.auth.models import AbstractUser
 from django.core.validators import FileExtensionValidator
 from django.db import models
+from django.db.models.constraints import CheckConstraint, Q
 
 # Create your models here.
 
@@ -17,7 +18,7 @@ class Channel(models.Model):
     subscribers = models.ManyToManyField(User, related_name='subscribed_to', blank=True)
     def is_user_subscribed(self, user):
         return user in self.subscribers.all()
-    
+
 
 
 class Video(models.Model):

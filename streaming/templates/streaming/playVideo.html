@@ -73,40 +73,40 @@
                         {% else %}
                         <img src="{% static 'streaming/images/profile_placeholder.jpg' %}"  alt="user-icon" class="user-icon">
                         {% endif %}
-                        <input type="text" placeholder="Write your comment.....">
+                        
+                        <form id="commentForm" method="post" action="javascript:;" onsubmit="commentForm()" >
+                            {% csrf_token %}
+                            {{ comment_form.comment }}
+                            {{ comment_form.on.as_hidden }}
+                            <a id="comment_url" href="{% url 'comment' %}"></a>
+                        </form>   
                     </div>
-                    <div class="old-comments">
-                        <img src="{% static 'streaming/images/simon.png' %}" alt="user-icon">
-                        <div>
-                            <h3>Simon <span>1 day ago</span></h3>
-                            <p>Here will be comment</p>
-                            <div class="comment-action">
-                                <img src="{% static 'streaming/images/like.png' %}" alt="like-icon">
-                                <span>15</span>
-                                <img src="{% static 'streaming/images/dislike.png' %}" alt="dislike-icon">
-                                <span>0</span>
-                                <span>REPLY</span>
-                                <a href="">All replies</a>
+
+                    <div id="old-comments-box">
+                        {% for comment in comments %}
+                        <div class="old-comments">
+                            {% if  comment.by.profile_pic %}
+                            <img src="{{ comment.by.profile_pic.url }}" alt="user-icon">
+                            {% else %}
+                            <img src="{% static 'streaming/images/profile_placeholder.jpg' %}" alt="user-icon">
+                            {% endif %}
+                            <div>
+                                <h3>{{ comment.by.username }} <span>{{ comment.time|timesince }}</span></h3>
+                                <p>{{ comment.comment }}</p>
+                                <div class="comment-action">
+                                    <img src="{% static 'streaming/images/like.png' %}" alt="like-icon">
+                                    <span>15</span>
+                                    <img src="{% static 'streaming/images/dislike.png' %}" alt="dislike-icon">
+                                    <span>0</span>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="old-comments">
-                        <img src="{% static 'streaming/images/cameron.png' %}" alt="user-icon">
-                        <div>
-                            <h3>Cameron <span>2 day ago</span></h3>
-                            <p>Here will be comment</p>
-                            <div class="comment-action">
-                                <img src="{% static 'streaming/images/like.png' %}" alt="like-icon">
-                                <span>15</span>
-                                <img src="{% static 'streaming/images/dislike.png' %}" alt="dislike-icon">
-                                <span>0</span>
-                                <span>REPLY</span>
-                                <a href="">All replies</a>
-                            </div>
-                        </div>
+                        {% endfor %}
                     </div>
                 </div>
-            </div>
+
+                    </div>
+                    
 
             <div class="right-sidebar">
                 {% for r in recommendations %}
@@ -119,14 +119,6 @@
                     </div>
                 </div>
                 {% endfor %}
-                <div class="side-video-list">
-                    <a href="" class="small-thumbnail"><img src="{% static 'streaming/images/thumbnail5.png' %}" alt="thumbnail"></a>
-                    <div class="vid-info">
-                        <a class="nav-link" href="">Here any title of your video abcdefghijklmnopqrstuvwxyz</a>
-                        <p>Easy Tutorials</p>
-                        <p>100k Views</p>
-                    </div>
-                </div>
             </div>
         </div>
     </div>

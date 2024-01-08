@@ -134,4 +134,34 @@ function handleUnlikeResponse(response) {
     }
 }
 
+//________________________________________________________________________________________________
+//Comment button
+function commentForm(){
+    $('#commentForm').submit(function (e) {
+        e.preventDefault();
+        data=$('#commentForm').serialize();
+        $('#id_comment').val('');
+        $.ajax({
+            type: 'POST',
+            url: $('#comment_url').attr('href'),
+            data: data,
+            dataType: 'json',
+            success: function (response) {
+                if (response.success) {
+                    // Handle success, for example, update the UI
+                    console.log('Comment added successfully');
 
+                    $('#old-comments-box').prepend(response.comment_html);
+                    // You can update the UI here as needed
+                } else {
+                    // Handle errors, for example, display validation errors
+                    console.error('Error adding comment:', response.errors);
+                    // You can display validation errors or take other actions
+                }
+            },
+            error: function () {
+                console.error('Error submitting comment');
+            }
+        });
+    });
+}
