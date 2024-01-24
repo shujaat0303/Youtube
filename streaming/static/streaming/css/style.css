@@ -197,7 +197,7 @@ nav {
 .video-list .thumbnail {
     width: 100%;
     border-radius: 5px;
-    
+    aspect-ratio: 16/9;
 }
 
 .video-list .vid-flex {
@@ -209,6 +209,7 @@ nav {
     width: 35px;
     margin-right: 10px;
     border-radius: 50%;
+    aspect-ratio: 1;
 }
 
 .vid-info {
@@ -544,15 +545,18 @@ nav {
 }
 
 
-
+.center{
+    display: flex;
+    justify-content: center;
+}
 /* Log in */
 
 .login {
     box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
     border-radius: 10px;
     margin-top: 100px;
-    margin-left: 550px;
-    margin-right: 550px;
+    width: 440px;
+    padding-inline: 45px;
     text-align: center;
 }
 
@@ -627,8 +631,8 @@ nav {
     box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
     border-radius: 10px;
     margin-top: 65px;
-    margin-left: 550px;
-    margin-right: 550px;
+    width: 440px;
+    padding-inline: 45px;
     text-align: center;
 }
 
@@ -857,6 +861,10 @@ nav {
     color: #000;
 }
 
+.nav-link img{
+    aspect-ratio: 1;
+}
+
 .s-channel-info-v {
     margin-top: 15px;
     color: #5a5a5a;
@@ -902,6 +910,14 @@ nav {
     margin-left: 600px;
     position: absolute;
     top: 125px;
+}
+
+.no_result{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+    
 }
 
 /*like button*/

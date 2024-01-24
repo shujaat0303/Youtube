@@ -9,9 +9,10 @@
     {% include "streaming/sidebar.html" %}
 
     <!-- Main -->
-    {% if channels or videos %}
+    
         <!-- Search -->
         <div class="search-bar">
+            {% if channels or videos %}
             {% for c in channels %}
             <div class="s-side-channel-list">
                 <div class="vid-flex">
@@ -43,22 +44,12 @@
                 </div>
             </div>
             {% endfor %}
-            <div class="s-side-video-list">
-                <a href="" class="small-thumbnail"><img src="../images/thumbnail2.png" alt="thumbnail"></a>
-                <div class="s-vid-info">
-                    <a class="nav-link" href="">Here any title of your videoabcdefghijklmnopqrstuvwxyz</a>
-                    <p class="s-vid-info-v"><span>100k Views</span> &bull; <span>1 hour</span></p><br>
-                    <div class="vid-flex">
-                        <img src="../images/Jack.png" alt="user-icon">
-                        <p class="s-vid-title">Easy Tutorials</p>
-                    </div>
-                    <br>
-                    <p class="s-vid-des">Description</p>
-                </div>
-            </div>
+            {% else %}
+            <div class="no_result">
+                {{ message }}
+            </div>       
+            {% endif %}
         </div>
-    {% else %}
-        {{ message }}
-    {% endif %}
+    
 
 {% endblock %}

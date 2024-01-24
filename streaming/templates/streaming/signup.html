@@ -3,25 +3,26 @@
 {% block body %}
 
 <!-- Signup -->
-<div class="signup">
-    <h4 class="google">YouTube</h4>
-    <h4 class="signin">Sign up</h4>
-    {{ message }}
-    <form action="{% url 'signup' %}" method="post">
-        {% csrf_token %}
-        <input type="text" name="username" placeholder="Username" autofocus required><br><br>
-        <input type="email" name="email"  placeholder="Email" required><br><br>
-        <input type="password" name="password" placeholder="Password" required><br><br>
-        <input type="password" name="confirmation" placeholder="Confirm Password" required><br>
+<div class="center">
+    <div class="signup">
+        <a href="{% url 'home' %}" ><h4 class="google">YouTube</h4></a>
+        <h4 class="signin">Sign up</h4>
+        {{ message }}
+        <form action="{% url 'signup' %}" method="post">
+            {% csrf_token %}
+            <input type="text" name="username" placeholder="Username" autofocus required><br><br>
+            <input type="email" name="email"  placeholder="Email" required><br><br>
+            <input type="password" name="password" placeholder="Password" required><br><br>
+            <input type="password" name="confirmation" placeholder="Confirm Password" required><br>
 
-        <div class="signup-btn vid-flex">
-            <a href="{% url 'login' %}">Already have an account?</a>
-            <input class="signup-button" type = "submit" value="Sign up">
-        </div>
-    </form>
-    
+            <div class="signup-btn vid-flex">
+                <a href="{% url 'login' %}">Already have an account?</a>
+                <input class="signup-button" type = "submit" value="Sign up">
+            </div>
+        </form>
+        
+    </div>
 </div>
-
 
 
 {% endblock %}
