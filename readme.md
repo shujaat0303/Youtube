@@ -1,23 +1,30 @@
-TODO:
-complete subscribed and liked using serverside parameters and then requests
+Youtube 
+# Objective:
+The purpose of this project is to mimic some basic functionalities of YouTube by creating a python web application using Django, SQL server management studio for database management, and HTML/CSS/Javascript for frontend.  
+# Scope:
 
+1. Creating user profiles
+1. Creating channels
+1. Uploading videos
+1. Liking, commenting and  subscribing
+1. Search for channels and videos
+1. Record watch history
 
-Projects to do:
-1. upload video backend 
-2. channel details backend
-3. search bar
-4. subscriptions
-5. like
-6. comments
-7. watch history
+# Requirements:
+## **Backend**
+### Python-
+1. django
+1. mssql-django
+## **Database**
+### SQL Server Management Studio
 
+## **Frontend**
+### HTML
+### CSS
+### Javascript
+1. Jquery
 
-
-
-
-Extra:
-1. Auto Thumbnail
-2. Video suggestions
+# Screenshots
 
 
 
