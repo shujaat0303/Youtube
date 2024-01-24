@@ -207,6 +207,8 @@ def history(request):
 
 
 def login_view(request):
+    if request.user.is_authenticated:
+        logout(request)
     if request.method == "POST":
         # Attempt to sign user in
         username = request.POST["username"]
@@ -229,6 +231,8 @@ def login_view(request):
 
 
 def signup_view(request):
+    if request.user.is_authenticated:
+        logout(request)
     if request.method == "POST":
         username = request.POST["username"]
         email = request.POST["email"]

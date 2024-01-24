@@ -3,31 +3,32 @@
 {% block body %}
 
 <!-- Login -->
-<div class="login">
-    <h4 class="google">YouTube</h4>
-    <h4 class="signin">Log in</h4>
-    <p>to continue to YouTube</p>
-    
-    <form action="{% url 'login' %}" method="post">
-        {% csrf_token %}
-        <div class="form-group">
-            <input autofocus class="form-control" type="text" name="username" placeholder="Username">
-        </div>
-        <br>
-        <div class="form-group">
-            <input class="form-control" type="password" name="password" placeholder="Password">
-        </div>
-        <span class="error">{{ message }}</span>
-        <br>
-        <div class="f-pass-div">
-            <a class="f-pass" href="">Forgot password?</a>
-        </div>
-        <div class="login-btn vid-flex">
-            <a href="{% url 'signup' %}">Create account</a>
-            <input class="login-button" type="submit" value="Log in">
-        </div>
-        <input type="hidden" name="next" value="{{ request.GET.next }}">
-    </form>
+<div class="center">
+    <div class="login">
+        <a href="{% url 'home' %}" ><h4 class="google">YouTube</h4></a>
+        <h4 class="signin">Log in</h4>
+        <p>to continue to YouTube</p>
+        
+        <form action="{% url 'login' %}" method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <input autofocus class="form-control" type="text" name="username" placeholder="Username">
+            </div>
+            <br>
+            <div class="form-group">
+                <input class="form-control" type="password" name="password" placeholder="Password">
+            </div>
+            <span class="error">{{ message }}</span>
+            <br>
+            <div class="f-pass-div">
+                <a class="f-pass" href="">Forgot password?</a>
+            </div>
+            <div class="login-btn vid-flex">
+                <a href="{% url 'signup' %}">Create account</a>
+                <input class="login-button" type="submit" value="Log in">
+            </div>
+            <input type="hidden" name="next" value="{{ request.GET.next }}">
+        </form>
+    </div>
 </div>
-
 {% endblock %}
