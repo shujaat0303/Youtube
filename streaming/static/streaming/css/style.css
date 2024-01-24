@@ -552,8 +552,8 @@ nav {
     box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
     border-radius: 10px;
     margin-top: 100px;
-    margin-left: 460px;
-    margin-right: 460px;
+    margin-left: 550px;
+    margin-right: 550px;
     text-align: center;
 }
 
@@ -582,6 +582,7 @@ nav {
 .f-pass-div {
     display: flex;
     margin-left: 50px;
+    margin-right: 50px;
 }
 
 .f-pass {
@@ -593,17 +594,17 @@ nav {
     margin-top: 65px;
     padding-bottom: 65px;
     display: flex;
+    margin-left: 50px;
+    margin-right: 50px;
 }
 
 .login-btn a {
-    margin-left: 50px;
     color: #0000ff;
-    width: 700px;
+    width: 350px;
 }
 
 .login-button {
-    margin-left: 150px;
-    margin-right: 50px;
+    margin-left: 100px;
     background-color: cornflowerblue;
     color: #fff;
     border-radius: 5px;
@@ -627,8 +628,8 @@ nav {
     box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
     border-radius: 10px;
     margin-top: 65px;
-    margin-left: 460px;
-    margin-right: 460px;
+    margin-left: 550px;
+    margin-right: 550px;
     text-align: center;
 }
 
@@ -652,17 +653,18 @@ nav {
 .signup-btn {
     margin-top: 65px;
     padding-bottom: 65px;
+    margin-left: 50px;
+    margin-right: 50px;
 }
 
 .signup-btn a {
-    margin-left: 50px;
     color: #0000ff;
-    width: 700px;
+    width: 350px;
+    font-size: 14px;
 }
 
 .signup-button {
-    margin-left: 150px;
-    margin-right: 50px;
+    margin-left: 100px;
     background-color: cornflowerblue;
     color: #fff;
     border-radius: 5px;

@@ -67,12 +67,13 @@ def playVideo(request,v):
     # get video from database then send it to playVideo.html
     video=Video.objects.get(id=v)
     # update watch history
-    watch_history,created = WatchHistory.objects.get_or_create(
-            by=request.user,
-            on=video,
-        )
-    if not created:
-        watch_history.save()
+    if request.user.is_authenticated:
+        watch_history,created = WatchHistory.objects.get_or_create(
+                by=request.user,
+                on=video,
+            )
+        if not created:
+            watch_history.save()
 
     #update num views of a video
     video.num_views=video.num_views+1
